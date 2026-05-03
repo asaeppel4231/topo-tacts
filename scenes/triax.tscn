@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://u31a7glcvq2n"]
+
+[ext_resource type="PackedScene" uid="uid://b4bwy58jp3b3m" path="res://scenes/player_base.tscn" id="1_dtlvs"]
+[ext_resource type="Texture2D" uid="uid://enf43sejpb2m" path="res://assets/triax/triax.webp" id="2_x3foc"]
+
+[node name="Triax" unique_id=1908255213 instance=ExtResource("1_dtlvs")]
+max_health = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0" unique_id=1828760442]
+
+[node name="Player" parent="." index="1" unique_id=2002950373]
+collision_mask = 7
+metadata/_edit_lock_ = true
+
+[node name="Image" parent="Player/Models" parent_id_path=PackedInt32Array(1474781210) index="0" unique_id=1239463901]
+texture = ExtResource("2_x3foc")
+region_rect = Rect2(6.8199997, 0, 25.68, 83)
+
+[node name="Hitbox" parent="Player/Models" parent_id_path=PackedInt32Array(1474781210) index="1" unique_id=253341313]
+position = Vector2(-0.5, -0.5)
+
+[node name="Hitbox_collision" parent="Player" index="1" unique_id=947587078]
+position = Vector2(0, 1)
