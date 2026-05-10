@@ -10,23 +10,39 @@ extends Node2D
 @onready var image       = $Player/Models/Image
 @onready var idle_timer  = $IdleTimer
 
+@onready var state_machine = $Player/StateMachine
+
+@export var idle_state: State
+@export var run_state: State
+@export var jump_state: State
+@export var duck_state: State
+@export var hurt_state: State
+@export var dead_state: State
+
 @export var max_health: int = 100
 
 var health: int
 var is_dead: bool = false
-var current_anim = ""
-
 var is_invincible: bool = false
+
+var current_anim = ""
+var last_anim    = ""
+
+var is_paused: bool = false
 
 #############################################
 #                 UTILITIES                 #
 #############################################
 
-func play_anim(name: String) -> void:
-	if current_anim == name:
+func play_anim(animation_name: String) -> void:
+	if current_anim == animation_name:
 		return  # animation is already running
-	current_anim = name # set the current animation state
-	anim_player.play(name) # and play the animation
+	last_anim = current_anim
+	current_anim = animation_name # set the current animation state
+	anim_player.play(animation_name) # and play the animation
+
+func unduck():
+	anim_player.play("unduck")
 
 func take_damage(amount: int) -> void:
 	if is_dead:
@@ -38,7 +54,7 @@ func take_damage(amount: int) -> void:
 
 func die() -> void:
 	is_dead = true
-	anim_player.play("death")
+	play_anim("death")
 	set_process(false)           # freeze's this script
 	set_physics_process(false)   # freeze's this script
 
@@ -48,7 +64,6 @@ func apply_damage(event: DamageEvent) -> void:
 	take_damage(event.amount)
 	# Knockback an Player weitergeben
 	player.apply_knockback(event.knockback)
-
 
 #############################################
 #             INPUT HANDLING                #
@@ -66,13 +81,14 @@ func handle_move(direction: int) -> void:
 	if direction != 0:
 		idle_timer.stop()
 		image.flip_h = direction < 0
-		play_anim("run")
+		play_anim("run_start")
+		play_anim("run_loop")
 	else:
 		if idle_timer.is_stopped():
 			idle_timer.start()
 	
 func handle_input() -> void:
-	var direction := 0
+	var direction = 0
 
 	if Input.is_action_pressed("player_left"):
 		direction = -1
@@ -82,25 +98,31 @@ func handle_input() -> void:
 	handle_move(direction)
 
 	if Input.is_action_just_pressed("player_jump"):
-		handle_jump()
+		state_machine.change_state(jump_state)
 
 	if Input.is_action_pressed("player_duck"):
 		handle_duck()
 
+func get_move_input() -> int:
+	var dir = 0
+	if Input.is_action_pressed("player_left"):
+		dir = -1
+	elif Input.is_action_pressed("player_right"):
+		dir = 1
+	return dir
+	
 #############################################
 #             PAUSE / RESUME                #
 #############################################
 
-func pause_player() -> void:
+func pause_player():
+	is_paused = true
+	anim_player.pause()
 	player.velocity = Vector2.ZERO
-	set_process(false)
-	set_physics_process(false)
-	anim_player.pause() # pauses the animation
 
-func resume_player() -> void:
-	set_process(true)
-	set_physics_process(true)
-	anim_player.play() # plays the animation again, but from the current position
+func resume_player():
+	is_paused = false
+	anim_player.play()
 
 #############################################
 #            SPECIAL FUNCTIONS              #
@@ -108,6 +130,8 @@ func resume_player() -> void:
 
 func _ready() -> void:
 	health = max_health
+	state_machine.owner = self
+	state_machine.change_state(idle_state)
 	
 func _physics_process(_delta):
 	handle_input()
@@ -116,11 +140,21 @@ func _physics_process(_delta):
 #                 EVENTS                    #
 #############################################
 
-func _on_idle_timer_timeout() -> void:
-	play_anim("idle")
+func _on_idle_timer_timeout():
+	if not is_dead and not Input.is_action_pressed("player_duck") and player.is_on_floor():
+		play_anim("idle")
 
-func _on_hitbox_body_entered(body: Node2D) -> void:
+func _on_hitbox_body_entered(_body: Node2D) -> void: # body is unused here
 	pass
 
 func _on_invincibly_timer_timeout() -> void:
 	is_invincible = false
+
+func _on_animation_player_animation_finished(_anim_name: StringName) -> void: # anim_name is unused here
+	print("Animation player finished...")
+		# Jetzt entscheiden, was danach passieren soll
+	if abs(player.velocity.x) > 2:
+	#		play_anim("run")
+		pass
+	else:
+		play_anim("idle")

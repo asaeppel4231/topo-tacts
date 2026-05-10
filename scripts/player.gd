@@ -23,7 +23,7 @@ func apply_knockback(force: Vector2) -> void:
 
 func _physics_process(delta):
 	if knockback_time > 0:
-		velocity = knockback_velocity
+		velocity += knockback_velocity
 		knockback_time -= delta
 	# Gravitation
 	if not is_on_floor():

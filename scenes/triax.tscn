@@ -1,12 +1,334 @@
 [gd_scene format=3 uid="uid://u31a7glcvq2n"]
 
 [ext_resource type="PackedScene" uid="uid://b4bwy58jp3b3m" path="res://scenes/player_base.tscn" id="1_dtlvs"]
+[ext_resource type="Script" uid="uid://dr66boddlftpy" path="res://scripts/player_states/idle_state.gd" id="2_p5fw0"]
 [ext_resource type="Texture2D" uid="uid://enf43sejpb2m" path="res://assets/triax/triax.webp" id="2_x3foc"]
+[ext_resource type="Script" uid="uid://d2i1q052prfwr" path="res://scripts/player_states/run_state.gd" id="3_ovust"]
+[ext_resource type="Script" uid="uid://c20htyadsng5e" path="res://scripts/abstract/state_machine.gd" id="3_r40s8"]
+[ext_resource type="Script" uid="uid://bcvudtdp1x5te" path="res://scripts/player_states/jump_state.gd" id="4_aocdc"]
+[ext_resource type="Script" uid="uid://bk30t6dhq1b5f" path="res://scripts/abstract/state.gd" id="4_p5fw0"]
+[ext_resource type="Script" uid="uid://l4xry7mouebv" path="res://scripts/player_states/duck_state.gd" id="5_5alnx"]
+
+[sub_resource type="Resource" id="Resource_p5fw0"]
+script = ExtResource("2_p5fw0")
+metadata/_custom_type_script = "uid://dr66boddlftpy"
+
+[sub_resource type="Resource" id="Resource_b0umx"]
+script = ExtResource("3_ovust")
+metadata/_custom_type_script = "uid://d2i1q052prfwr"
+
+[sub_resource type="Resource" id="Resource_1amvv"]
+script = ExtResource("4_aocdc")
+metadata/_custom_type_script = "uid://bcvudtdp1x5te"
+
+[sub_resource type="Resource" id="Resource_5kh3l"]
+script = ExtResource("5_5alnx")
+metadata/_custom_type_script = "uid://l4xry7mouebv"
+
+[sub_resource type="Animation" id="Animation_l4ej0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Models:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Models:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x3foc"]
+resource_name = "duck"
+length = 0.555
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Models:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.53097165),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.7)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.53284985),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Models:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5258387),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_r40s8"]
+resource_name = "idle"
+length = 2.455
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Models:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.539861, 1.1077667, 1.672167, 2.4013298),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -1.0559242, 0.0, 1.1623893, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Models:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Models:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_162rq"]
+resource_name = "jump"
+length = 3.13
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Models:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03505591),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(62.415, -54.065)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03505591),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.7487463]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Models:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.03505591),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.695, 0.485)]
+}
+
+[sub_resource type="Animation" id="Animation_ovust"]
+resource_name = "run_loop"
+length = 0.815
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Models:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.34, 0.69),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.34, 0.69),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.5707964, 1.5707964, 1.5707964]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Models:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.34, 0.69),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0.85), Vector2(1, 1.755)]
+}
+
+[sub_resource type="Animation" id="Animation_1oqf7"]
+resource_name = "run"
+length = 0.58
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Models:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.49),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5707964]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Models:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.48),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p5fw0"]
+resource_name = "unduck"
+length = 0.57
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Player/Models:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5258387),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 0.7), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.52934426),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Player/Models:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5223331),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l4ej0"]
+_data = {
+&"RESET": SubResource("Animation_l4ej0"),
+&"duck": SubResource("Animation_x3foc"),
+&"idle": SubResource("Animation_r40s8"),
+&"jump": SubResource("Animation_162rq"),
+&"run_loop": SubResource("Animation_ovust"),
+&"run_start": SubResource("Animation_1oqf7"),
+&"unduck": SubResource("Animation_p5fw0")
+}
+
+[sub_resource type="Resource" id="Resource_162rq"]
+script = ExtResource("4_p5fw0")
+metadata/_custom_type_script = "uid://bk30t6dhq1b5f"
 
 [node name="Triax" unique_id=1908255213 instance=ExtResource("1_dtlvs")]
-max_health = 1
+idle_state = SubResource("Resource_p5fw0")
+run_state = SubResource("Resource_b0umx")
+jump_state = SubResource("Resource_1amvv")
+duck_state = SubResource("Resource_5kh3l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0" unique_id=1828760442]
+libraries/ = SubResource("AnimationLibrary_l4ej0")
 
 [node name="Player" parent="." index="1" unique_id=2002950373]
 collision_mask = 7
@@ -15,9 +337,24 @@ metadata/_edit_lock_ = true
 [node name="Image" parent="Player/Models" parent_id_path=PackedInt32Array(1474781210) index="0" unique_id=1239463901]
 texture = ExtResource("2_x3foc")
 region_rect = Rect2(6.8199997, 0, 25.68, 83)
+metadata/_edit_lock_ = true
 
 [node name="Hitbox" parent="Player/Models" parent_id_path=PackedInt32Array(1474781210) index="1" unique_id=253341313]
 position = Vector2(-0.5, -0.5)
 
+[node name="Hitbox_hitted" parent="Player/Models/Hitbox" index="0" unique_id=248064810]
+metadata/_edit_lock_ = true
+
 [node name="Hitbox_collision" parent="Player" index="1" unique_id=947587078]
 position = Vector2(0, 1)
+metadata/_edit_lock_ = true
+
+[node name="StateMachine" type="Node" parent="Player" index="2" unique_id=1039424088]
+script = ExtResource("3_r40s8")
+initial_state = SubResource("Resource_162rq")
+metadata/_custom_type_script = "uid://c20htyadsng5e"
+
+[node name="IdleTimer" parent="." index="2" unique_id=247088768]
+wait_time = 4.313000000000001
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
