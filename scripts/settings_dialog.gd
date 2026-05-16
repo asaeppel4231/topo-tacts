@@ -226,7 +226,7 @@ func _on_confirm_reset_canceled() -> void:
 
 func _on_difficulty_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
-		handle_changed_slider_value_on_released_input("difficulty", difficulty_slider.value)
+		handle_changed_slider_value_on_released_input("difficulty", difficulty_slider.value, false)
 		update_difficulty_text_label()
 
 func _on_volume_sfx_slider_drag_ended(value_changed: bool) -> void:
