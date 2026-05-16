@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://b4bwy58jp3b3m"]
 
-[ext_resource type="Script" uid="uid://urlikaf5mwod" path="res://scripts/player_base.gd" id="1_q051v"]
+[ext_resource type="Script" uid="uid://urlikaf5mwod" path="res://scripts/PlayerBase/player_base.gd" id="1_q051v"]
 [ext_resource type="Texture2D" uid="uid://boswpb8kgfgxn" path="res://assets/missing_texture.png" id="2_q051v"]
-[ext_resource type="Script" uid="uid://d3jwmgo734vsu" path="res://scripts/player.gd" id="2_tp51p"]
+[ext_resource type="Script" uid="uid://d3jwmgo734vsu" path="res://scripts/PlayerBase/player.gd" id="2_tp51p"]
 [ext_resource type="Script" uid="uid://dxfhq22yykwdt" path="res://scripts/hitbox.gd" id="3_mipr5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v55d4"]
