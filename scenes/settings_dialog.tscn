@@ -1,0 +1,299 @@
+[gd_scene format=3 uid="uid://df51nokh8nhcx"]
+
+[ext_resource type="Script" uid="uid://q4e0gs82iqov" path="res://scripts/settings_dialog.gd" id="1_00hgc"]
+[ext_resource type="FontFile" uid="uid://p2p5c1yc44p2" path="res://fonts/Advent Pro/Advent_Pro_Bold.33.ttf" id="2_dy1h8"]
+[ext_resource type="Texture2D" uid="uid://beifdf5cx3h6e" path="res://assets/ui/dialog_common/back.webp" id="2_ona7p"]
+[ext_resource type="LabelSettings" uid="uid://cjmenk564oqbu" path="res://assets/ui/dialog_common/dialog_labels.tres" id="4_dy1h8"]
+
+[sub_resource type="Theme" id="Theme_00hgc"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_hg831"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_00hgc"]
+events = [SubResource("InputEventKey_hg831")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_00hgc"]
+device = -1
+keycode = 4194332
+
+[sub_resource type="Shortcut" id="Shortcut_ona7p"]
+events = [SubResource("InputEventKey_00hgc")]
+
+[node name="SettingsDialog" type="Control" unique_id=774174123]
+z_index = 1
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -640.0
+offset_bottom = -360.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_00hgc")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=606281388]
+custom_minimum_size = Vector2(1, 1)
+layout_mode = 1
+offset_right = 411.0
+offset_bottom = 384.0
+theme = SubResource("Theme_00hgc")
+color = Color(0.14509805, 0.38039216, 1, 0.74509805)
+
+[node name="btn_container" type="VBoxContainer" parent="ColorRect" unique_id=49149235]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.5
+offset_top = -152.0
+offset_right = 132.5
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackAndHelp" type="HBoxContainer" parent="ColorRect/btn_container" unique_id=892341527]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="ColorRect/btn_container/BackAndHelp" unique_id=1190335177]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Goes back to the title screen"
+theme_override_fonts/font = ExtResource("2_dy1h8")
+shortcut = SubResource("Shortcut_00hgc")
+text = "Go back"
+icon = ExtResource("2_ona7p")
+expand_icon = true
+
+[node name="Help" type="Button" parent="ColorRect/btn_container/BackAndHelp" unique_id=777793011]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Opens a help dialog"
+theme_override_fonts/font = ExtResource("2_dy1h8")
+shortcut = SubResource("Shortcut_ona7p")
+text = "??? (Help)"
+
+[node name="DifficultyText" type="Label" parent="ColorRect/btn_container" unique_id=1899889655]
+layout_mode = 2
+tooltip_text = "Sets the difficulty"
+mouse_filter = 0
+text = "Difficulty: "
+horizontal_alignment = 1
+
+[node name="DifficultyChooser" type="HBoxContainer" parent="ColorRect/btn_container" unique_id=767480922]
+layout_mode = 2
+tooltip_text = "Sets the difficulty"
+
+[node name="DifficultyEasy" type="Label" parent="ColorRect/btn_container/DifficultyChooser" unique_id=922153266]
+layout_mode = 2
+text = "Easy"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="DifficultySlider" type="HSlider" parent="ColorRect/btn_container/DifficultyChooser" unique_id=1887911115]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 2.0
+
+[node name="DifficultyHard" type="Label" parent="ColorRect/btn_container/DifficultyChooser" unique_id=1450508976]
+layout_mode = 2
+text = "Hard"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="AudioVolumeSFXLabel" type="Label" parent="ColorRect/btn_container" unique_id=1591900100]
+layout_mode = 2
+tooltip_text = "Controls the volume of sound effects"
+mouse_filter = 0
+text = "Volume (Soundeffects)"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="AudioVolumeSFXControl" type="HBoxContainer" parent="ColorRect/btn_container" unique_id=161516439]
+layout_mode = 2
+tooltip_text = "Controls the volume of sound effects"
+
+[node name="LabelMin" type="Label" parent="ColorRect/btn_container/AudioVolumeSFXControl" unique_id=133562638]
+layout_mode = 2
+text = "0%"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="Slider" type="HSlider" parent="ColorRect/btn_container/AudioVolumeSFXControl" unique_id=775482252]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelMax" type="Label" parent="ColorRect/btn_container/AudioVolumeSFXControl" unique_id=176399633]
+layout_mode = 2
+text = "100%"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="AudioVolumeMusicLabel" type="Label" parent="ColorRect/btn_container" unique_id=868709209]
+layout_mode = 2
+tooltip_text = "Controls the volume of music"
+mouse_filter = 0
+text = "Volume (Background music)"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="AudioVolumeMusicControl" type="HBoxContainer" parent="ColorRect/btn_container" unique_id=257613693]
+layout_mode = 2
+tooltip_text = "Controls the volume of music"
+
+[node name="LabelMin" type="Label" parent="ColorRect/btn_container/AudioVolumeMusicControl" unique_id=1078498941]
+layout_mode = 2
+text = "0%"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="Slider" type="HSlider" parent="ColorRect/btn_container/AudioVolumeMusicControl" unique_id=353503250]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelMax" type="Label" parent="ColorRect/btn_container/AudioVolumeMusicControl" unique_id=1443027917]
+layout_mode = 2
+text = "100%"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="AudioVolumeTotalLabel" type="Label" parent="ColorRect/btn_container" unique_id=859262712]
+layout_mode = 2
+tooltip_text = "Controls the output volume"
+mouse_filter = 0
+text = "Volume (Total)"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="AudioVolumeTotalControl" type="HBoxContainer" parent="ColorRect/btn_container" unique_id=671119674]
+layout_mode = 2
+tooltip_text = "Controls the output volume"
+
+[node name="LabelMin" type="Label" parent="ColorRect/btn_container/AudioVolumeTotalControl" unique_id=924713990]
+layout_mode = 2
+text = "0%"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="Slider" type="HSlider" parent="ColorRect/btn_container/AudioVolumeTotalControl" unique_id=1345059011]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LabelMax" type="Label" parent="ColorRect/btn_container/AudioVolumeTotalControl" unique_id=171945912]
+layout_mode = 2
+text = "100%"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="MultiplayerLabel" type="Label" parent="ColorRect/btn_container" unique_id=796561692]
+layout_mode = 2
+text = "Multiplayer"
+horizontal_alignment = 1
+
+[node name="DefaultUsername" type="HBoxContainer" parent="ColorRect/btn_container" unique_id=954864154]
+layout_mode = 2
+tooltip_text = "Specifies the default username used in multiplayer sessions"
+
+[node name="LabelDefaultUsername" type="Label" parent="ColorRect/btn_container/DefaultUsername" unique_id=1437791153]
+layout_mode = 2
+text = "Default Username:"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="LnEDefaultUsername" type="LineEdit" parent="ColorRect/btn_container/DefaultUsername" unique_id=2067982719]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Input your default username here"
+
+[node name="DefaultPort" type="HBoxContainer" parent="ColorRect/btn_container" unique_id=1628000794]
+layout_mode = 2
+tooltip_text = "Specifies the port used in multiplayer sessions"
+
+[node name="LabelDefaultPort" type="Label" parent="ColorRect/btn_container/DefaultPort" unique_id=175877136]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Default Port:"
+label_settings = ExtResource("4_dy1h8")
+
+[node name="SpbDefaultPort" type="SpinBox" parent="ColorRect/btn_container/DefaultPort" unique_id=798043812]
+layout_mode = 2
+min_value = 1024.0
+max_value = 9.223372e+18
+value = 1024.0
+
+[node name="LabelLastSettingsChange" type="Label" parent="ColorRect/btn_container" unique_id=1183216907]
+custom_maximum_size = Vector2(300, -1)
+layout_mode = 2
+label_settings = ExtResource("4_dy1h8")
+autowrap_mode = 3
+
+[node name="ResetSettings" type="Button" parent="ColorRect/btn_container" unique_id=487036835]
+layout_mode = 2
+tooltip_text = "This button will reset all settings.
+This action cannot be undone.
+I am not responsible for any data loss caused by this operation."
+theme_override_fonts/font = ExtResource("2_dy1h8")
+text = "Reset settings"
+
+[node name="ConfirmReset" type="ConfirmationDialog" parent="." unique_id=1103907935]
+oversampling_override = 1.0
+title = "Reset settings"
+position = Vector2i(502, 316)
+size = Vector2i(357, 80)
+max_size = Vector2i(420, 140)
+ok_button_text = "OK"
+dialog_text = "Are you sure you want to reset all settings?"
+
+[node name="HelpDialog" type="Window" parent="." unique_id=248970798]
+gui_embed_subwindows = true
+oversampling_override = 1.0
+title = "Help about Settings Dialog"
+position = Vector2i(418, 253)
+size = Vector2i(567, 235)
+visible = false
+
+[node name="HelpText" type="RichTextLabel" parent="HelpDialog" unique_id=910226962]
+custom_minimum_size = Vector2(1, 1)
+custom_maximum_size = Vector2(520, 220)
+propagate_maximum_size = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 33.5
+offset_top = 7.0
+offset_right = -13.5
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.0400003)
+bbcode_enabled = true
+text = "[b]Difficulty[/b]
+Easy, Normal, Hard – Adjusts how much damage fractal edges
+deal and how complex the world generation becomes.
+
+[b]Sound Effects[/b]
+Controls the volume of all sound effects in this game.
+
+[b]Music[/b]
+Controls the volume of background music.
+
+[b]Total Volume[/b]
+Controls the overall output volume of the game.
+
+[b]Multiplayer[/b]
+Default Username: Used when connecting to servers.
+Default Port: Used when hosting a server or connecting to one.
+"
+autowrap_mode = 0
+
+[connection signal="pressed" from="ColorRect/btn_container/BackAndHelp/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ColorRect/btn_container/BackAndHelp/Help" to="." method="_on_help_pressed"]
+[connection signal="drag_ended" from="ColorRect/btn_container/DifficultyChooser/DifficultySlider" to="." method="_on_difficulty_slider_drag_ended"]
+[connection signal="value_changed" from="ColorRect/btn_container/DifficultyChooser/DifficultySlider" to="." method="_on_difficulty_slider_value_changed"]
+[connection signal="drag_ended" from="ColorRect/btn_container/AudioVolumeSFXControl/Slider" to="." method="_on_volume_sfx_slider_drag_ended"]
+[connection signal="value_changed" from="ColorRect/btn_container/AudioVolumeSFXControl/Slider" to="." method="_on_volume_sfx_slider_value_changed"]
+[connection signal="drag_ended" from="ColorRect/btn_container/AudioVolumeMusicControl/Slider" to="." method="_on_volume_music_slider_drag_ended"]
+[connection signal="value_changed" from="ColorRect/btn_container/AudioVolumeMusicControl/Slider" to="." method="_on_volume_music_slider_value_changed"]
+[connection signal="drag_ended" from="ColorRect/btn_container/AudioVolumeTotalControl/Slider" to="." method="_on_volume_total_slider_drag_ended"]
+[connection signal="value_changed" from="ColorRect/btn_container/AudioVolumeTotalControl/Slider" to="." method="_on_volume_total_slider_value_changed"]
+[connection signal="text_changed" from="ColorRect/btn_container/DefaultUsername/LnEDefaultUsername" to="." method="_on_lne_default_username_text_changed"]
+[connection signal="value_changed" from="ColorRect/btn_container/DefaultPort/SpbDefaultPort" to="." method="_on_spb_default_port_value_changed"]
+[connection signal="pressed" from="ColorRect/btn_container/ResetSettings" to="." method="_on_reset_settings_pressed"]
+[connection signal="canceled" from="ConfirmReset" to="." method="_on_confirm_reset_canceled"]
+[connection signal="confirmed" from="ConfirmReset" to="." method="_on_confirm_reset_confirmed"]
+[connection signal="close_requested" from="HelpDialog" to="." method="_on_help_dialog_close_requested"]

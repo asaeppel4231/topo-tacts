@@ -1,0 +1,133 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: TopoTacts\n"
+"Language: de\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+# Title UI
+
+msgid "New Game"
+msgstr "Neues Spiel"
+
+# Tooltip of "New Game"
+
+msgid "Opens a dialog with settings\nfor a new game state"
+msgstr "Öffnet ein Dialog mit\nEinstellungen für einen neuen Spielstand"
+
+msgid "Load Game"
+msgstr "Spiel laden"
+
+# Tooltip of "Load Game"
+
+msgid "Opens a dialog where you can select\nthe game state to load"
+msgstr "Öffnet einen Dialog, wo du\neinen Spielstand zum Laden auswählen kannst"
+
+msgid "Settings"
+msgstr "Einstellungen"
+
+# Tooltip of "Settings"
+
+msgid "Opens a dialog where you can\nadjust the general game settings"
+msgstr "Öffnet einen Dialog, wo du\ndie allgemeinen Spieleinstellungen anpassen kannst"
+
+msgid "Quit"
+msgstr "Verlassen"
+
+# Tooltip of "Quit"
+
+msgid "Closes the game"
+msgstr "Schließt das Spiel"
+
+# Settings Dialog
+
+msgid "Go back"
+msgstr "Zurück"
+
+msgid "Goes back to the title screen"
+msgstr "Gehe zurück zum Titelbildschirm"
+
+msgid "??? (Help)"
+msgstr "??? (Hilfe)"
+
+msgid "Opens a help dialog"
+msgstr "Öffnet einen Hilfedialog"
+
+# Help Dialog inside of Settings Dialog
+
+msgid "Help about Settings Dialog"
+msgstr "Hilfe zum Einstellungsdialog"
+
+msgid "[b]Difficulty[/b]\nEasy, Normal, Hard – Adjusts how much damage fractal edges\ndeal and how complex the world generation becomes.\n\n[b]Sound Effects[/b]\nControls the volume of all sound effects in this game.\n\n[b]Music[/b]\nControls the volume of background music.\n\n[b]Total Volume[/b]\nControls the overall output volume of the game.\n\n[b]Multiplayer[/b]\nDefault Username: Used when connecting to servers.\nDefault Port: Used when hosting a server or connecting to one.\n"
+msgstr "[b]Schwierigkeit[/b]\nEinfach, Normal, Schwer – Legt fest, wie viel Schaden\nFraktalkanten verursachen und wie komplex die Weltgenerierung\n wird.\n\n[b]Soundeffekte[/b]\nSteuert die Lautstärke aller Soundeffekte in diesem Spiel.\n\n[b]Musik[/b]\nSteuert die Lautstärke der Hintergrundmusik.\n\n[b]Gesamtlautstärke[/b]\nSteuert die gesamte Ausgabe-Lautstärke des Spiels.\n\n[b]Multiplayer[/b]\nStandard-Benutzername: Wird beim Verbinden mit Servern\nverwendet.\nStandard-Port: Wird beim Hosten eines Servers oder beim\nVerbinden mit einem Server verwendet.\n"
+
+# Settings Dialog - again
+
+msgid "Easy"
+msgstr "Einfach"
+
+msgid "Hard"
+msgstr "Schwer"
+
+msgid "Difficulty: Easy"
+msgstr "Schwierigkeitsstufe: Einfach"
+
+msgid "Difficulty: Normal"
+msgstr "Schwierigkeitsstufe: Normal"
+
+msgid "Difficulty: Hard"
+msgstr "Schwierigkeitsstufe: Schwer"
+
+msgid "Sets the difficulty"
+msgstr "Setzt die Schwierigkeitsstufe"
+
+msgid "Volume (Soundeffects)"
+msgstr "Lautstärke (Soundeffekte)"
+
+msgid "Controls the volume of sound effects"
+msgstr "Steuert die Lautstärke der Soundeffekte"
+
+msgid "Volume (Background music)"
+msgstr "Lautstärke (Hintergrundmusik)"
+
+msgid "Controls the volume of music"
+msgstr "Steuert die Lautstärke der Musik"
+
+msgid "Controls the output volume"
+msgstr "Steuert die Ausgabe-Lautstärke"
+
+msgid "Volume (Total)"
+msgstr "Gesamtlautstärke"
+
+msgid "Multiplayer"
+msgstr "Mehrspieler"
+
+msgid "Default Username:"
+msgstr "Standard-Benutzername:"
+
+msgid "Specifies the default username used in multiplayer sessions"
+msgstr "Setzt den Standard-Benutzernamen, genutzt in Mehrspieler-Sitzungen"
+
+msgid "Default Port:"
+msgstr "Standard-Port:"
+
+msgid "Specifies the port used in multiplayer sessions"
+msgstr "Setzt den Standard-Port, genutzt in Mehrspieler-Sitzungen"
+
+msgid "Settings last changed at %s"
+msgstr "Einstellungen zuletzt geändert am %s"
+
+msgid "Reset settings"
+msgstr "Einstellungen zurücksetzen"
+
+msgid "This button will reset all settings.\nThis action cannot be undone.\nI am not responsible for any data loss caused by this operation."
+msgstr "Dieser Knopf wird all deine Einstellungen zurücksetzen.\nDies kann nicht wieder rückgängig gemacht werden\nIch hafte nicht dafür, wenn irgendwelche Daten dadurch verloren gehen"
+
+msgid "Are you sure you want to reset all settings?"
+msgstr "Bist du dir sicher, dass du wirklich\nalle Einstellungen zurücksetzen möchtest?"
+
+msgid "Cancel"
+msgstr "Abbrechen"
+
+msgid "Currently not implemented"
+msgstr "Aktuell nicht implementiert"
+

@@ -10,7 +10,7 @@ func physics_update(_delta): # delta is unused here
 
 	# 1. Duck loslassen → Unduck
 	if not Input.is_action_pressed("player_duck"):
-		owner.state_machine.change_state(owner.unduck_state)
+#		owner.state_machine.change_state(owner.unduck_state)
 		return
 
 	# 2. Bewegung → Unduck + Run
