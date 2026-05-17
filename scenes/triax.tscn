@@ -334,6 +334,8 @@ metadata/_custom_type_script = "uid://d2i1q052prfwr"
 
 [node name="JumpState" type="Node" parent="Player/StateMachine" index="1" unique_id=93366632]
 script = ExtResource("4_aocdc")
+jump_high = 600.0
+jump_divider = 0.009
 metadata/_custom_type_script = "uid://bcvudtdp1x5te"
 
 [node name="HitState" type="Node" parent="Player/StateMachine" index="2" unique_id=1815474096]

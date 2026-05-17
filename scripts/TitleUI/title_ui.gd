@@ -14,7 +14,7 @@ extends Control
 @onready var btn_settings    := $TitleUILayer/btn_container/Settings
 @onready var btn_quit        := $TitleUILayer/btn_container/Quit
 
-@onready var settings_dialog := $TitleUILayer/SettingsDialog
+#@onready var settings_dialog := $TitleUILayer/SettingsDialog
 
 @onready var anim_state      := "intro"
 
@@ -52,13 +52,13 @@ func hide_all():
 func _ready() -> void:
 	set_process_unhandled_input(true)
 	add_child(tree_ctl)
-	settings_dialog.close()
+	$TitleUILayer/SettingsDialog.close() # fix, see last function of this file
 	enable_disable_all_buttons(true)
 	anim_player.play("fade_in")
 
 func _unhandled_input(event):
 	if event.is_action_pressed("abort_operation"):
-		if not settings_dialog.visible:
+		if not $TitleUILayer/SettingsDialog.visible: # fix, see last function of this file
 			skip_animation()
 
 #############################################
@@ -85,7 +85,7 @@ func _on_load_game_pressed() -> void:
 #############################################
 
 func _on_settings_pressed() -> void:
-	settings_dialog.open()
+	$TitleUILayer/SettingsDialog.open() # fix, see last function of this file
 
 #############################################
 #           QUIT BUTTON RELATED             #
@@ -124,8 +124,9 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 # BUG: If the SettingsDialog is visible, then the settings_dialog variable is nil!!! 
 # Otherwise it works correctly. I think it's an engine bug like the time-bug, 
 # documented in settings_dialog.gd
+# FIX: (Quick and Dirty): Use each time the $ Node asking way instead of the variable
 func _on_dialog_visibility_changed() -> void:
-	if not settings_dialog.visible:
+	if not $TitleUILayer/SettingsDialog.visible:
 		if last_focused_button:
 			await get_tree().process_frame
 			last_focused_button.grab_focus()
