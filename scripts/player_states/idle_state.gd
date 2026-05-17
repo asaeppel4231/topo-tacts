@@ -1,16 +1,24 @@
-extends State
+extends HasAnimationsHelper
 class_name IdleState
 
-func enter(_msg := {}): # msg is unused here
-	owner.play_anim("idle")
-	owner.player.velocity.x = 0
+func enter(msg := {}):
+	if UserData.get_value("debug") == 1:
+		print("IdleState entered: ", msg)
+	base_anim_player_play_anim("idle")
+	actor.velocity.x = 0
 
-func handle_input(_event): # event is unused here
+func handle_input(_event):
+	if actor.is_dead:
+		return
+
 	if Input.is_action_pressed("player_left") or Input.is_action_pressed("player_right"):
-		owner.state_machine.change_state(owner.run_state)
+		get_actor_statemachine().change_state(actor.run_state, {"emitted-by": "IdleState",
+		"Reference": self})
 
 	if Input.is_action_just_pressed("player_jump"):
-		owner.state_machine.change_state(owner.jump_state)
+		get_actor_statemachine().change_state(actor.jump_state, {"emitted-by": "IdleState",
+		"Reference": self})
 
 	if Input.is_action_pressed("player_duck"):
-		owner.state_machine.change_state(owner.duck_state)
+		get_actor_statemachine().change_state(actor.duck_state, {"emitted-by": "IdleState",
+		"Reference": self})

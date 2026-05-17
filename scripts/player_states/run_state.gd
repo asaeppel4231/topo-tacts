@@ -40,7 +40,7 @@ func physics_update(_delta):
 	if dir != 0:
 		if actor.speed < max_speed:
 			actor.speed += speed_increase
-		base_anim_player_resume()
+		#base_anim_player_resume()
 		timer_started = false
 		actor.flip_node.scale.x = dir
 		move(dir)
@@ -56,7 +56,7 @@ func physics_update(_delta):
 			await base.get_tree().process_frame
 			base.idle_timer.start()
 		actor.velocity.x = 0
-		base_anim_player_pause()
+		#base_anim_player_pause()
 
 func _on_timeout():
 	get_actor_statemachine().change_state(actor.idle_state, {"emitted-by": "RunState",
