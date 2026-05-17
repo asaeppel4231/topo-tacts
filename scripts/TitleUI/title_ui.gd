@@ -2,6 +2,7 @@ extends Control
 
 @onready var tree_ctl        := TreeWrapper.new()
 
+@onready var ui_camera       := $UICamera
 @onready var title_ui_layer  := $TitleUILayer
 @onready var background      := $TitleUILayer/Background
 @onready var title           := $TitleUILayer/Title
@@ -35,6 +36,15 @@ func enable_disable_all_buttons(state: bool) -> void:
 	for btn in btn_container.get_children():
 		btn.disabled = state
 
+func show_all():
+	show()
+	ui_camera.make_current()
+	title_ui_layer.show()
+
+func hide_all():
+	hide()
+	title_ui_layer.hide()
+
 #############################################
 #            SPECIAL FUNCTIONS              #
 #############################################
@@ -60,7 +70,8 @@ func _unhandled_input(event):
 #############################################
 
 func _on_new_game_pressed() -> void:
-	pass # Replace with function body.
+	if UserData.get_value("debug") == 1:
+		get_parent().test_map()
 
 #############################################
 #          LOAD GAME BUTTON RELATED         #

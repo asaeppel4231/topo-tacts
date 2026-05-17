@@ -1,31 +1,88 @@
 extends CharacterBody2D
 
-@export var speed: float = 200.0
-@export var jump_force: float = 350.0
-@export var gravity: float = 900.0
+@onready var ground_ray       := $GroundRay
+@onready var player_cam       := $PlayerCamera
+@onready var flip_node        := $FlipNode
+@onready var models           := $FlipNode/Models
+@onready var hitbox           := $FlipNode/Models/Hitbox
+@onready var image            := $FlipNode/Models/Image
+@onready var state_machine    := $StateMachine
+@onready var hitbox_collision := $Hitbox_collision
 
-var knockback_velocity: Vector2 = Vector2.ZERO
-var knockback_time              = 0.0
+@onready var run_state  := $StateMachine/RunState
+@onready var jump_state := $StateMachine/JumpState
+@onready var fly_state  := $StateMachine/FlyState
+@onready var duck_state := $StateMachine/DuckState
+@onready var idle_state := $StateMachine/IdleState
+@onready var die_state  := $StateMachine/DieState
 
-func move(direction: int):
-	velocity.x = lerp(velocity.x, direction * speed, 0.2)
+@export var max_health: int = 100
 
-func jump():
-	if is_on_floor():
-		velocity.y = -jump_force
+var health: int
+var is_dead: bool = false
+var is_invincible: bool = false
+
+var knockback_velocity := Vector2.ZERO
+var knockback_time     := 0.0
+
+var speed              := 0.0
+
+#############################################
+#                 UTILITIES                 #
+#############################################
+
+func make_pcam_current():
+	player_cam.make_current()
+
+func take_damage(amount: int) -> void:
+	if is_dead:
+		return
+	health -= amount
+	health = max(health, 0)
+	if health == 0:
+		die()
+
+func die() -> void:
+	is_dead = true
+	get_parent().anim_player.stop()
 
 func apply_damage(event: DamageEvent) -> void:
-	get_parent().apply_damage(event)
+	if event.direct_die:
+		health = 0
+	if is_invincible or is_dead:
+		return
+	take_damage(event.amount)
+	# Knockback an Player weitergeben
+	apply_knockback(event.knockback)
+
+func jump():
+	pass
 
 func apply_knockback(force: Vector2) -> void:
 	knockback_velocity = force
 	knockback_time = 0.15   # Time of the Knockback
 
-func _physics_process(delta):
-	if knockback_time > 0:
-		velocity += knockback_velocity
-		knockback_time -= delta
-	# Gravitation
+#############################################
+#            SPECIAL FUNCTIONS              #
+#############################################
+
+func _ready():
+	await get_parent().ready
+
+	state_machine.actor = self
+	state_machine.base = get_parent()
+
 	if not is_on_floor():
-		velocity.y += gravity * delta
+		state_machine.change_state(fly_state, {"emitted-by": "Player (_ready)", "Reference": self})
+	else:
+		state_machine.change_state(run_state, {"emitted-by": "Player (_ready)", "Reference": self})
+
+func _process(_delta: float) -> void:
+	pass
+
+func _physics_process(delta):
+	# Knockback
+	if knockback_time > 0:
+		velocity = knockback_velocity
+		knockback_time -= delta
 	move_and_slide()

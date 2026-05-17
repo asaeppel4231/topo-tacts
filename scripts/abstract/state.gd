@@ -1,7 +1,23 @@
-extends Resource
+extends Node
 class_name State
 
-var owner: Node = null
+var actor
+var base
+
+func get_actor_statemachine():
+	return actor.state_machine
+
+func base_anim_player_play_anim(anim_name: String):
+	base.anim_player.play(anim_name)
+
+func base_anim_player_stop():
+	base.anim_player.stop()
+
+func base_anim_player_pause():
+	base.anim_player.pause()
+
+func base_anim_player_resume():
+	base.anim_player.play()
 
 func enter(_msg := {}): # msg is unused here
 	pass

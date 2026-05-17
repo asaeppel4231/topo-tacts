@@ -3,17 +3,29 @@
 [ext_resource type="Script" uid="uid://ffqbcve5pm8u" path="res://scripts/Main/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://drdrk8trdjvrf" path="res://scenes/title_ui.tscn" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cpypoq2gk16py" path="res://scenes/enemy_example.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://u31a7glcvq2n" path="res://scenes/triax.tscn" id="4_jyhfs"]
+[ext_resource type="Script" uid="uid://lyqp05aslb2p" path="res://scripts/EnemyExample/attack_hitbox.gd" id="5_tbgi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(815, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
+size = Vector2(7234, 119)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tefeu"]
+size = Vector2(7235, 138)
 
 [node name="Main" type="Node2D" unique_id=538257801]
 script = ExtResource("1_jyhfs")
 
 [node name="TitleUI" parent="." unique_id=2009301712 instance=ExtResource("1_sugp2")]
+visible = false
+
+[node name="Triax" parent="." unique_id=1908255213 instance=ExtResource("4_jyhfs")]
+position = Vector2(99.285, 0)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1207698390]
-visible = false
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1602588197]
 position = Vector2(406.5, 461)
@@ -24,4 +36,29 @@ position = Vector2(821, 569)
 shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="EnemyExample" parent="." unique_id=1824407134 instance=ExtResource("2_sugp2")]
-position = Vector2(659, 341)
+position = Vector2(1024, 433)
+
+[node name="BottomBorder" type="StaticBody2D" parent="." unique_id=123445985]
+visible = false
+position = Vector2(0, 1489)
+collision_layer = 8
+
+[node name="Image" type="Sprite2D" parent="BottomBorder" unique_id=1601416206]
+
+[node name="Hitbox_Collision" type="CollisionShape2D" parent="BottomBorder" unique_id=1122162772]
+position = Vector2(0, -163.5)
+shape = SubResource("RectangleShape2D_tbgi4")
+
+[node name="AttackHitbox" type="Area2D" parent="BottomBorder" unique_id=1303810236]
+position = Vector2(0, -172)
+collision_layer = 16
+script = ExtResource("5_tbgi4")
+damage_amount = 0
+knockback = Vector2(-100, 10)
+direct_die = true
+
+[node name="Hitbox_Hitted" type="CollisionShape2D" parent="BottomBorder/AttackHitbox" unique_id=1529111319]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_tefeu")
+
+[connection signal="body_entered" from="BottomBorder/AttackHitbox" to="BottomBorder/AttackHitbox" method="_on_body_entered"]

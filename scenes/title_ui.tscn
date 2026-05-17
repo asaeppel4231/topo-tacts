@@ -89,8 +89,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r04qo")
 
+[node name="UICamera" type="Camera2D" parent="." unique_id=315303484]
+position = Vector2(640, 360)
+
 [node name="TitleUILayer" type="CanvasLayer" parent="." unique_id=921783644]
 layer = 50
+visible = false
 
 [node name="Background" type="ColorRect" parent="TitleUILayer" unique_id=402466265]
 offset_right = 1279.0

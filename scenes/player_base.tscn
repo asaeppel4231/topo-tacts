@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://urlikaf5mwod" path="res://scripts/PlayerBase/player_base.gd" id="1_q051v"]
 [ext_resource type="Texture2D" uid="uid://boswpb8kgfgxn" path="res://assets/missing_texture.png" id="2_q051v"]
 [ext_resource type="Script" uid="uid://d3jwmgo734vsu" path="res://scripts/PlayerBase/player.gd" id="2_tp51p"]
-[ext_resource type="Script" uid="uid://dxfhq22yykwdt" path="res://scripts/hitbox.gd" id="3_mipr5"]
+[ext_resource type="Script" uid="uid://dxfhq22yykwdt" path="res://scripts/PlayerBase/hitbox.gd" id="3_mipr5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v55d4"]
 size = Vector2(80, 79)
@@ -12,30 +12,46 @@ size = Vector2(80, 79)
 script = ExtResource("1_q051v")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=2002950373]
-collision_mask = 5
+collision_mask = 30
 script = ExtResource("2_tp51p")
 
-[node name="Models" type="Node2D" parent="Player" unique_id=1474781210]
+[node name="GroundRay" type="RayCast2D" parent="Player" unique_id=769168559]
+target_position = Vector2(0, 500)
+collision_mask = 2
+collide_with_areas = true
 
-[node name="Image" type="Sprite2D" parent="Player/Models" unique_id=1239463901]
+[node name="PlayerCamera" type="Camera2D" parent="Player" unique_id=92459989]
+
+[node name="FlipNode" type="Node2D" parent="Player" unique_id=798639559]
+
+[node name="Models" type="Node2D" parent="Player/FlipNode" unique_id=1474781210]
+
+[node name="Image" type="Sprite2D" parent="Player/FlipNode/Models" unique_id=1239463901]
 texture = ExtResource("2_q051v")
 
-[node name="Hitbox" type="Area2D" parent="Player/Models" unique_id=253341313]
+[node name="Hitbox" type="Area2D" parent="Player/FlipNode/Models" unique_id=253341313]
+collision_mask = 14
 script = ExtResource("3_mipr5")
 
-[node name="Hitbox_hitted" type="CollisionShape2D" parent="Player/Models/Hitbox" unique_id=248064810]
+[node name="Hitbox_hitted" type="CollisionShape2D" parent="Player/FlipNode/Models/Hitbox" unique_id=248064810]
 shape = SubResource("RectangleShape2D_v55d4")
 one_way_collision_margin = 0.0
 
 [node name="Hitbox_collision" type="CollisionShape2D" parent="Player" unique_id=947587078]
-position = Vector2(45, 6)
 shape = SubResource("RectangleShape2D_v55d4")
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=247088768]
+wait_time = 5.970000000000001
+
+[node name="KnockbackTimer" type="Timer" parent="." unique_id=1976908159]
+
+[node name="PauseTimer" type="Timer" parent="." unique_id=1380480251]
 
 [node name="InvinciblyTimer" type="Timer" parent="." unique_id=2042201385]
 wait_time = 0.5
 
-[connection signal="body_entered" from="Player/Models/Hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_entered" from="Player/FlipNode/Models/Hitbox" to="." method="_on_hitbox_body_entered"]
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="KnockbackTimer" to="." method="_on_knockback_timer_timeout"]
+[connection signal="timeout" from="PauseTimer" to="." method="_on_pause_timer_timeout"]
 [connection signal="timeout" from="InvinciblyTimer" to="." method="_on_invincibly_timer_timeout"]

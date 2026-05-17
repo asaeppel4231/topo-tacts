@@ -6,31 +6,17 @@
 [ext_resource type="Script" uid="uid://d2i1q052prfwr" path="res://scripts/player_states/run_state.gd" id="3_ovust"]
 [ext_resource type="Script" uid="uid://c20htyadsng5e" path="res://scripts/abstract/state_machine.gd" id="3_r40s8"]
 [ext_resource type="Script" uid="uid://bcvudtdp1x5te" path="res://scripts/player_states/jump_state.gd" id="4_aocdc"]
-[ext_resource type="Script" uid="uid://bk30t6dhq1b5f" path="res://scripts/abstract/state.gd" id="4_p5fw0"]
 [ext_resource type="Script" uid="uid://l4xry7mouebv" path="res://scripts/player_states/duck_state.gd" id="5_5alnx"]
-
-[sub_resource type="Resource" id="Resource_p5fw0"]
-script = ExtResource("2_p5fw0")
-metadata/_custom_type_script = "uid://dr66boddlftpy"
-
-[sub_resource type="Resource" id="Resource_b0umx"]
-script = ExtResource("3_ovust")
-metadata/_custom_type_script = "uid://d2i1q052prfwr"
-
-[sub_resource type="Resource" id="Resource_1amvv"]
-script = ExtResource("4_aocdc")
-metadata/_custom_type_script = "uid://bcvudtdp1x5te"
-
-[sub_resource type="Resource" id="Resource_5kh3l"]
-script = ExtResource("5_5alnx")
-metadata/_custom_type_script = "uid://l4xry7mouebv"
+[ext_resource type="Script" uid="uid://cfn3nhym2akce" path="res://scripts/player_states/die_state.gd" id="6_aocdc"]
+[ext_resource type="Script" uid="uid://dfkyvlr0oamtr" path="res://scripts/player_states/fly_state.gd" id="9_aocdc"]
+[ext_resource type="Script" uid="uid://cctfays17g35w" path="res://scripts/player_states/hit_state.gd" id="10_5alnx"]
 
 [sub_resource type="Animation" id="Animation_l4ej0"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Models:scale")
+tracks/0/path = NodePath("Player/FlipNode/Models:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -42,7 +28,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/path = NodePath("Player/FlipNode/Models:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -54,7 +40,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player/Models:position")
+tracks/2/path = NodePath("Player/FlipNode/Models:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -70,7 +56,7 @@ length = 0.555
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Models:scale")
+tracks/0/path = NodePath("Player/FlipNode/Models:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -82,7 +68,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/path = NodePath("Player/FlipNode/Models:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -94,7 +80,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player/Models:position")
+tracks/2/path = NodePath("Player/FlipNode/Models:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -111,7 +97,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Models:rotation")
+tracks/0/path = NodePath("Player/FlipNode/Models:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -123,7 +109,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Models:scale")
+tracks/1/path = NodePath("Player/FlipNode/Models:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -135,7 +121,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player/Models:position")
+tracks/2/path = NodePath("Player/FlipNode/Models:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -151,7 +137,7 @@ length = 3.13
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Models:position")
+tracks/0/path = NodePath("Player/FlipNode/Models:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -163,7 +149,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/path = NodePath("Player/FlipNode/Models:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -175,7 +161,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player/Models:scale")
+tracks/2/path = NodePath("Player/FlipNode/Models:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -192,7 +178,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Models:position")
+tracks/0/path = NodePath("Player/FlipNode/Models:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -204,7 +190,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/path = NodePath("Player/FlipNode/Models:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -216,7 +202,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player/Models:scale")
+tracks/2/path = NodePath("Player/FlipNode/Models:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -232,7 +218,7 @@ length = 0.58
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Models:position")
+tracks/0/path = NodePath("Player/FlipNode/Models:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -244,7 +230,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/path = NodePath("Player/FlipNode/Models:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -256,7 +242,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player/Models:scale")
+tracks/2/path = NodePath("Player/FlipNode/Models:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -272,7 +258,7 @@ length = 0.57
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Player/Models:scale")
+tracks/0/path = NodePath("Player/FlipNode/Models:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -284,7 +270,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Player/Models:rotation")
+tracks/1/path = NodePath("Player/FlipNode/Models:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -296,7 +282,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Player/Models:position")
+tracks/2/path = NodePath("Player/FlipNode/Models:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -317,44 +303,58 @@ _data = {
 &"unduck": SubResource("Animation_p5fw0")
 }
 
-[sub_resource type="Resource" id="Resource_162rq"]
-script = ExtResource("4_p5fw0")
-metadata/_custom_type_script = "uid://bk30t6dhq1b5f"
-
 [node name="Triax" unique_id=1908255213 instance=ExtResource("1_dtlvs")]
-idle_state = SubResource("Resource_p5fw0")
-run_state = SubResource("Resource_b0umx")
-jump_state = SubResource("Resource_1amvv")
-duck_state = SubResource("Resource_5kh3l")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0" unique_id=1828760442]
 libraries/ = SubResource("AnimationLibrary_l4ej0")
 
 [node name="Player" parent="." index="1" unique_id=2002950373]
-collision_mask = 7
 metadata/_edit_lock_ = true
 
-[node name="Image" parent="Player/Models" parent_id_path=PackedInt32Array(1474781210) index="0" unique_id=1239463901]
+[node name="Image" parent="Player/FlipNode/Models" parent_id_path=PackedInt32Array(1474781210) index="0" unique_id=1239463901]
 texture = ExtResource("2_x3foc")
 region_rect = Rect2(6.8199997, 0, 25.68, 83)
-metadata/_edit_lock_ = true
 
-[node name="Hitbox" parent="Player/Models" parent_id_path=PackedInt32Array(1474781210) index="1" unique_id=253341313]
+[node name="Hitbox" parent="Player/FlipNode/Models" parent_id_path=PackedInt32Array(1474781210) index="1" unique_id=253341313]
 position = Vector2(-0.5, -0.5)
 
-[node name="Hitbox_hitted" parent="Player/Models/Hitbox" index="0" unique_id=248064810]
-metadata/_edit_lock_ = true
-
-[node name="Hitbox_collision" parent="Player" index="1" unique_id=947587078]
+[node name="Hitbox_hitted" parent="Player/FlipNode/Models/Hitbox" index="0" unique_id=248064810]
 position = Vector2(0, 1)
-metadata/_edit_lock_ = true
 
-[node name="StateMachine" type="Node" parent="Player" index="2" unique_id=1039424088]
+[node name="Hitbox_collision" parent="Player" index="3" unique_id=947587078]
+position = Vector2(0, 1)
+
+[node name="StateMachine" type="Node" parent="Player" index="4" unique_id=1551342151]
 script = ExtResource("3_r40s8")
-initial_state = SubResource("Resource_162rq")
 metadata/_custom_type_script = "uid://c20htyadsng5e"
 
-[node name="IdleTimer" parent="." index="2" unique_id=247088768]
-wait_time = 4.313000000000001
+[node name="RunState" type="Node" parent="Player/StateMachine" index="0" unique_id=1889701023]
+script = ExtResource("3_ovust")
+metadata/_custom_type_script = "uid://d2i1q052prfwr"
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[node name="JumpState" type="Node" parent="Player/StateMachine" index="1" unique_id=93366632]
+script = ExtResource("4_aocdc")
+metadata/_custom_type_script = "uid://bcvudtdp1x5te"
+
+[node name="HitState" type="Node" parent="Player/StateMachine" index="2" unique_id=1815474096]
+script = ExtResource("10_5alnx")
+metadata/_custom_type_script = "uid://cctfays17g35w"
+
+[node name="FlyState" type="Node" parent="Player/StateMachine" index="3" unique_id=864021356]
+script = ExtResource("9_aocdc")
+metadata/_custom_type_script = "uid://dfkyvlr0oamtr"
+
+[node name="DuckState" type="Node" parent="Player/StateMachine" index="4" unique_id=2077205560]
+script = ExtResource("5_5alnx")
+metadata/_custom_type_script = "uid://l4xry7mouebv"
+
+[node name="IdleState" type="Node" parent="Player/StateMachine" index="5" unique_id=1956622612]
+script = ExtResource("2_p5fw0")
+metadata/_custom_type_script = "uid://dr66boddlftpy"
+
+[node name="DieState" type="Node" parent="Player/StateMachine" index="6" unique_id=1625199347]
+script = ExtResource("6_aocdc")
+metadata/_custom_type_script = "uid://cfn3nhym2akce"
+
+[node name="IdleTimer" parent="." index="2" unique_id=247088768]
+wait_time = 2.651

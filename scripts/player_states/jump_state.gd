@@ -1,10 +1,15 @@
-extends State
+extends HasAnimationsHelper
 class_name JumpState
 
-func enter(_msg := {}): # msg is unused here
-	owner.play_anim("jump")
-	owner.player.jump()
+@export var jump_high := 0.0
 
-func physics_update(_delta): # delta is unused here
-	if owner.player.is_on_floor():
-		owner.state_machine.change_state(owner.idle_state)
+func enter(msg := {}):
+	if UserData.get_value("debug") == 1:
+		print("JumpState entered: ", msg)
+	base_anim_player_play_anim("jump")
+	if msg.get("emitted-by") == "RunState":
+		actor.velocity.y = -jump_high * 0.1 * actor.speed
+	else: 
+		actor.velocity.y = -jump_high
+	get_actor_statemachine().change_state(actor.fly_state, {"emitted-by": "JumpState",
+	"Reference": self})

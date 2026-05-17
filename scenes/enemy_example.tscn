@@ -1,29 +1,27 @@
 [gd_scene format=3 uid="uid://cpypoq2gk16py"]
 
 [ext_resource type="Texture2D" uid="uid://bey03le84ytwf" path="res://assets/example_enemy/example_enemy.png" id="1_fbr5l"]
-[ext_resource type="Script" uid="uid://lyqp05aslb2p" path="res://scripts/attack_hitbox.gd" id="2_vrsce"]
+[ext_resource type="Script" uid="uid://lyqp05aslb2p" path="res://scripts/EnemyExample/attack_hitbox.gd" id="2_vrsce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbr5l"]
-size = Vector2(215.9375, 135)
+size = Vector2(278, 135)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrsce"]
-size = Vector2(288, 136)
+size = Vector2(286, 136)
 
-[node name="EnemyExample" type="CharacterBody2D" unique_id=1824407134]
-collision_layer = 2
+[node name="EnemyExample" type="StaticBody2D" unique_id=1827203167]
+collision_layer = 4
 
 [node name="Image" type="Sprite2D" parent="." unique_id=1601416206]
 texture = ExtResource("1_fbr5l")
 
 [node name="Hitbox_Collision" type="CollisionShape2D" parent="." unique_id=1122162772]
-position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_fbr5l")
 
 [node name="AttackHitbox" type="Area2D" parent="." unique_id=1303810236]
-collision_layer = 4
+collision_layer = 16
 script = ExtResource("2_vrsce")
 knockback = Vector2(-100, 10)
-metadata/_edit_lock_ = true
 
 [node name="Hitbox_Hitted" type="CollisionShape2D" parent="AttackHitbox" unique_id=1529111319]
 shape = SubResource("RectangleShape2D_vrsce")

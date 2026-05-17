@@ -1,5 +1,12 @@
 extends Node2D
 
+@onready var title_ui := $TitleUI
+@onready var triax    := $Triax
+
+@onready var static_body_2d := $StaticBody2D
+
+@onready var enemy_example := $EnemyExample
+
 #############################################
 #            SPECIAL FUNCTIONS              #
 #############################################
@@ -13,6 +20,17 @@ func _ready() -> void:
 
 	if UserData.get_value("debug") == 1:
 		print("Using locale: ", locale)
+	
+	title_ui.show_all()
 
 func _process(_delta: float) -> void: # delta is unused
-	pass
+	if Input.is_action_just_pressed("reload (DEBUG)"):
+		title_ui.tree_ctl.restart_game()
+
+func test_map():
+	triax.player.make_pcam_current()
+	title_ui.hide_all()
+	triax.show()
+	triax.is_paused = false
+	static_body_2d.show()
+	enemy_example.show()
