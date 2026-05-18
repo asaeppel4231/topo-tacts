@@ -5,7 +5,11 @@ class_name FlyState
 @export var jump_cut_factor := 0.5   # Für variable Sprunghöhe
 @export var max_fall_speed := 1200.0
 
+@onready var prepared_message := {"emitted-by": "FlyState", "Reference": self}
+
 func enter(msg := {}):
+	if actor.velocity.x > 10:
+		actor.velocity.x = 8
 	if UserData.get_value("debug") == 1:
 		print("FlyState entered: ", msg)
 
@@ -13,6 +17,9 @@ func physics_update(delta):
 	if actor.is_dead:
 		return
 
+	if base.anim_player.is_playing():
+		return
+	
 	# Variable Sprunghöhe (Taste loslassen)
 	if Input.is_action_just_released("player_jump") and actor.velocity.y < 0:
 		actor.velocity.y *= jump_cut_factor
@@ -25,5 +32,4 @@ func physics_update(delta):
 
 	# Landen
 	if actor.is_on_floor():
-		get_actor_statemachine().change_state(actor.run_state, {"emitted-by": "FlyState",
-		"Reference": self})
+		get_actor_statemachine().change_state(actor.run_state, prepared_message)

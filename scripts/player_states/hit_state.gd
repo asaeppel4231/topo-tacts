@@ -1,6 +1,8 @@
 extends HasAnimationsHelper
 class_name HitState
 
+@onready var prepared_message := {"emitted-by": "HitState", "Reference": self}
+
 func enter(msg := {}):
 	if UserData.get_value("debug") == 1:
 		print("HitState entered: ", msg)

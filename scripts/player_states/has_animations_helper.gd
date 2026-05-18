@@ -1,5 +1,8 @@
 extends State
 class_name HasAnimationsHelper
 
-func exit():
+func enter(_msg := {}):
 	base_anim_player_stop()
+
+func exit():
+	pass

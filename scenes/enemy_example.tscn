@@ -21,7 +21,7 @@ shape = SubResource("RectangleShape2D_fbr5l")
 [node name="AttackHitbox" type="Area2D" parent="." unique_id=1303810236]
 collision_layer = 16
 script = ExtResource("2_vrsce")
-knockback = Vector2(-100, 10)
+knockback = Vector2(-100, -10)
 
 [node name="Hitbox_Hitted" type="CollisionShape2D" parent="AttackHitbox" unique_id=1529111319]
 shape = SubResource("RectangleShape2D_vrsce")

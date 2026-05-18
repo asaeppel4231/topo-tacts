@@ -32,11 +32,11 @@ position = Vector2(406.5, 461)
 shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1053063152]
-position = Vector2(821, 569)
+position = Vector2(1271, 562)
 shape = SubResource("RectangleShape2D_o5qli")
 
 [node name="EnemyExample" parent="." unique_id=1824407134 instance=ExtResource("2_sugp2")]
-position = Vector2(1024, 433)
+position = Vector2(1515, 460)
 
 [node name="BottomBorder" type="StaticBody2D" parent="." unique_id=123445985]
 visible = false

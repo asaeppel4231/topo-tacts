@@ -1,5 +1,7 @@
 extends State
-class_name KnockbackedState
+class_name KnockbackState
+
+@onready var prepared_message := {"emitted-by": "KnockbackState", "Reference": self}
 
 func enter(msg := {}):
 	owner.play_anim("hurt")

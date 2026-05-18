@@ -94,6 +94,7 @@ position = Vector2(640, 360)
 
 [node name="TitleUILayer" type="CanvasLayer" parent="." unique_id=921783644]
 layer = 50
+visible = false
 
 [node name="Background" type="ColorRect" parent="TitleUILayer" unique_id=402466265]
 offset_right = 1279.0

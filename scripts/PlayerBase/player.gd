@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var far_ground_ray   := $FarGroundRay
 @onready var ground_ray       := $GroundRay
 @onready var player_cam       := $PlayerCamera
 @onready var flip_node        := $FlipNode

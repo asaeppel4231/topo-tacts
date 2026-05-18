@@ -1,6 +1,8 @@
 extends HasAnimationsHelper
 class_name IdleState
 
+@onready var prepared_message := {"emitted-by": "IdleState", "Reference": self}
+
 func enter(msg := {}):
 	if UserData.get_value("debug") == 1:
 		print("IdleState entered: ", msg)

@@ -133,7 +133,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_162rq"]
 resource_name = "jump"
-length = 3.13
+length = 0.715
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -141,10 +141,10 @@ tracks/0/path = NodePath("Player/FlipNode/Models:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03505591),
+"times": PackedFloat32Array(0, 0.7095556),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(62.415, -54.065)]
+"values": [Vector2(0, 0), Vector2(33, -33)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -153,7 +153,7 @@ tracks/1/path = NodePath("Player/FlipNode/Models:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.03505591),
+"times": PackedFloat32Array(0, 0.7095556),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 0.7487463]
@@ -165,7 +165,7 @@ tracks/2/path = NodePath("Player/FlipNode/Models:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.03505591),
+"times": PackedFloat32Array(0, 0.7095556),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.695, 0.485)]
@@ -330,6 +330,8 @@ metadata/_custom_type_script = "uid://c20htyadsng5e"
 
 [node name="RunState" type="Node" parent="Player/StateMachine" index="0" unique_id=1889701023]
 script = ExtResource("3_ovust")
+default_speed = 500.0
+disable_speed_limit = true
 metadata/_custom_type_script = "uid://d2i1q052prfwr"
 
 [node name="JumpState" type="Node" parent="Player/StateMachine" index="1" unique_id=93366632]
