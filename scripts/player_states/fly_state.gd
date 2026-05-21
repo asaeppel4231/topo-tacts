@@ -8,6 +8,8 @@ class_name FlyState
 @onready var prepared_message := {"emitted-by": "FlyState", "Reference": self}
 
 func enter(msg := {}):
+	actor.get_node("GPUParticles2D").emit_particle(Transform2D(0, Vector2(0, 0)), Vector2(0, 0),
+	Color(255, 255, 255), Color(255, 255, 255), 0)
 	if actor.velocity.x > 10:
 		actor.velocity.x = 8
 	if UserData.get_value("debug") == 1:
@@ -21,12 +23,9 @@ func physics_update(delta):
 	if Input.is_action_just_released("player_jump") and actor.velocity.y < 0:
 		actor.velocity.y *= jump_cut_factor
 
-	# Schwerkraft
-	actor.velocity.y += gravity * delta
-
-	# Maximalgeschwindigkeit nach unten
+	var fall_multiplier: float = 1.0 + abs(actor.velocity.y) / 300.0
+	actor.velocity.y += gravity * fall_multiplier * delta
 	actor.velocity.y = min(actor.velocity.y, max_fall_speed)
 
-	# Landen
-	if actor.ground_ray_left.is_colliding() or actor.ground_ray_right.is_colliding():
+	if is_grounded() and actor.velocity.y >= 0:
 		get_actor_statemachine().change_state(actor.run_state, prepared_message)

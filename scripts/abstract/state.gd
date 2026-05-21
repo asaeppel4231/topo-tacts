@@ -4,6 +4,9 @@ class_name State
 var actor
 var base
 
+func is_grounded() -> bool:
+	return actor.ground_ray_left.is_colliding() or actor.ground_ray_right.is_colliding()
+
 func get_actor_statemachine():
 	return actor.state_machine
 

@@ -45,15 +45,20 @@ func enter(msg := {}):
 		base_anim_player_play_anim("run_loop") # Skip run_start animation
 	base.on_timeout_idle_timer = _on_timeout
 
-func physics_update(_delta):
+func physics_update(delta):
 	if actor.is_dead:
 		get_actor_statemachine().change_state(actor.die_state, prepared_message)
 
+	if is_grounded():
+		coyote_timer = coyote_time
+	else:
+		coyote_timer -= delta
+		if coyote_timer <= 0.0:
+			get_actor_statemachine().change_state(actor.fly_state, prepared_message)
+	
 	dir = base.get_move_input()
 
 	if dir != 0:
-		if not actor.ground_ray_left.is_colliding() and not actor.ground_ray_right.is_colliding():
-			get_actor_statemachine().change_state(actor.fly_state, prepared_message)
 		increase_speed()
 		base_anim_player_resume()
 		timer_started = false
@@ -70,6 +75,8 @@ func physics_update(_delta):
 		if base.anim_player.get_current_animation() == "run_loop":
 			base_anim_player_pause()
 	if Input.is_action_just_pressed("player_jump"):
+		if dir == 0:
+			actor.speed = 1
 		get_actor_statemachine().change_state(actor.jump_state, prepared_message)
 	if Input.is_action_just_pressed("player_duck"):
 		get_actor_statemachine().change_state(actor.duck_state, prepared_message)
