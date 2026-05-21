@@ -16,9 +16,6 @@ func enter(msg := {}):
 func physics_update(delta):
 	if actor.is_dead:
 		return
-
-	if base.anim_player.is_playing():
-		return
 	
 	# Variable Sprunghöhe (Taste loslassen)
 	if Input.is_action_just_released("player_jump") and actor.velocity.y < 0:
@@ -31,5 +28,5 @@ func physics_update(delta):
 	actor.velocity.y = min(actor.velocity.y, max_fall_speed)
 
 	# Landen
-	if actor.is_on_floor():
+	if actor.ground_ray_left.is_colliding() or actor.ground_ray_right.is_colliding():
 		get_actor_statemachine().change_state(actor.run_state, prepared_message)

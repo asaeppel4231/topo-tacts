@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://df51nokh8nhcx"]
 
-[ext_resource type="Script" uid="uid://q4e0gs82iqov" path="res://scripts/SettingsDialog/settings_dialog.gd" id="1_00hgc"]
+[ext_resource type="Script" uid="uid://dj7vgmffw42dw" path="res://scripts/SettingsDialog/settings_dialog.gd" id="1_00hgc"]
 [ext_resource type="FontFile" uid="uid://p2p5c1yc44p2" path="res://fonts/Advent Pro/Advent_Pro_Bold.33.ttf" id="2_dy1h8"]
 [ext_resource type="Texture2D" uid="uid://beifdf5cx3h6e" path="res://assets/ui/dialog_common/back.webp" id="2_ona7p"]
 [ext_resource type="LabelSettings" uid="uid://cjmenk564oqbu" path="res://assets/ui/dialog_common/dialog_labels.tres" id="4_dy1h8"]

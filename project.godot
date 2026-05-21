@@ -8,12 +8,16 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="TopoTacts"
 run/main_scene="uid://dhfqxbovmcyn4"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-boot_splash/bg_color=Color(0.66341895, 0.4933111, 0.99483484, 1)
+boot_splash/bg_color=Color(0.663419, 0.493311, 0.994835, 1)
 boot_splash/image="uid://okg5ql2rrr0m"
 config/icon="res://icon.svg"
 
@@ -23,7 +27,7 @@ buses/default_bus_layout="uid://dnipdakvr7cm"
 
 [autoload]
 
-UserData="*uid://5wyl4aqal3cn"
+UserData="*res://scripts/abstract/user_data_manager.gd"
 
 [display]
 

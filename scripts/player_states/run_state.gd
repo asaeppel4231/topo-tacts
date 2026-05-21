@@ -13,6 +13,9 @@ var timer_started := false
 
 @onready var prepared_message := {"emitted-by": "RunState", "Reference": self}
 
+@export var coyote_time := 0.1
+var coyote_timer := 0.0
+
 func move(direction: int):
 	actor.velocity.x = lerp(actor.velocity.x, direction * actor.speed, 0.2)
 
@@ -46,12 +49,11 @@ func physics_update(_delta):
 	if actor.is_dead:
 		get_actor_statemachine().change_state(actor.die_state, prepared_message)
 
-	print(actor.is_on_floor())
-
 	dir = base.get_move_input()
-	if not actor.ground_ray.is_colliding():
-		get_actor_statemachine().change_state(actor.fly_state, prepared_message)
+
 	if dir != 0:
+		if not actor.ground_ray_left.is_colliding() and not actor.ground_ray_right.is_colliding():
+			get_actor_statemachine().change_state(actor.fly_state, prepared_message)
 		increase_speed()
 		base_anim_player_resume()
 		timer_started = false
@@ -71,6 +73,6 @@ func physics_update(_delta):
 		get_actor_statemachine().change_state(actor.jump_state, prepared_message)
 	if Input.is_action_just_pressed("player_duck"):
 		get_actor_statemachine().change_state(actor.duck_state, prepared_message)
-
+	
 func _on_timeout():
 	get_actor_statemachine().change_state(actor.idle_state, prepared_message)
