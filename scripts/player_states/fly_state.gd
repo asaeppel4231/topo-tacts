@@ -8,8 +8,6 @@ class_name FlyState
 @onready var prepared_message := {"emitted-by": "FlyState", "Reference": self}
 
 func enter(msg := {}):
-	actor.get_node("GPUParticles2D").emit_particle(Transform2D(0, Vector2(0, 0)), Vector2(0, 0),
-	Color(255, 255, 255), Color(255, 255, 255), 0)
 	if actor.velocity.x > 10:
 		actor.velocity.x = 8
 	if UserData.get_value("debug") == 1:

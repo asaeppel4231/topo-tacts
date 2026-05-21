@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://b4bwy58jp3b3m"]
 
-[ext_resource type="Script" uid="uid://df7so71nh5n71" path="res://scripts/PlayerBase/player_base.gd" id="1_q051v"]
+[ext_resource type="Script" uid="uid://urlikaf5mwod" path="res://scripts/PlayerBase/player_base.gd" id="1_q051v"]
 [ext_resource type="Texture2D" uid="uid://boswpb8kgfgxn" path="res://assets/missing_texture.png" id="2_q051v"]
-[ext_resource type="Script" uid="uid://qj1owqwa7wtd" path="res://scripts/PlayerBase/player.gd" id="2_tp51p"]
-[ext_resource type="Script" uid="uid://ckrfyfiv8chdo" path="res://scripts/PlayerBase/player_camera.gd" id="3_mg7lw"]
-[ext_resource type="Script" uid="uid://dvlxh61vfxfps" path="res://scripts/PlayerBase/hitbox.gd" id="3_mipr5"]
+[ext_resource type="Script" uid="uid://d3jwmgo734vsu" path="res://scripts/PlayerBase/player.gd" id="2_tp51p"]
+[ext_resource type="Script" uid="uid://b2a8uk7gcfla5" path="res://scripts/PlayerBase/player_camera.gd" id="3_mg7lw"]
+[ext_resource type="Script" uid="uid://dxfhq22yykwdt" path="res://scripts/PlayerBase/hitbox.gd" id="3_mipr5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v55d4"]
 size = Vector2(80, 79)

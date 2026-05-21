@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://u31a7glcvq2n"]
 
 [ext_resource type="PackedScene" uid="uid://b4bwy58jp3b3m" path="res://scenes/player_base.tscn" id="1_dtlvs"]
-[ext_resource type="Script" uid="uid://dppkfi6il7tv3" path="res://scripts/player_states/idle_state.gd" id="2_p5fw0"]
-[ext_resource type="Texture2D" uid="uid://bhje1ld37br0v" path="res://assets/triax/triax.webp" id="2_x3foc"]
-[ext_resource type="Script" uid="uid://depxm6qusk6ak" path="res://scripts/player_states/run_state.gd" id="3_ovust"]
-[ext_resource type="Script" uid="uid://cka482is4wrxl" path="res://scripts/abstract/state_machine.gd" id="3_r40s8"]
-[ext_resource type="Script" uid="uid://cwdwevfcah4aa" path="res://scripts/player_states/jump_state.gd" id="4_aocdc"]
-[ext_resource type="Script" uid="uid://5kg6fn00n2gn" path="res://scripts/player_states/duck_state.gd" id="5_5alnx"]
-[ext_resource type="Script" uid="uid://b06pnuy53swwv" path="res://scripts/player_states/die_state.gd" id="6_aocdc"]
-[ext_resource type="Script" uid="uid://ka0kjv8af1bc" path="res://scripts/player_states/fly_state.gd" id="9_aocdc"]
-[ext_resource type="Script" uid="uid://1aqy00m5b5lf" path="res://scripts/player_states/hit_state.gd" id="10_5alnx"]
+[ext_resource type="Script" uid="uid://dr66boddlftpy" path="res://scripts/player_states/idle_state.gd" id="2_p5fw0"]
+[ext_resource type="Texture2D" uid="uid://enf43sejpb2m" path="res://assets/triax/triax.webp" id="2_x3foc"]
+[ext_resource type="Script" uid="uid://d2i1q052prfwr" path="res://scripts/player_states/run_state.gd" id="3_ovust"]
+[ext_resource type="Script" uid="uid://c20htyadsng5e" path="res://scripts/abstract/state_machine.gd" id="3_r40s8"]
+[ext_resource type="Script" uid="uid://bcvudtdp1x5te" path="res://scripts/player_states/jump_state.gd" id="4_aocdc"]
+[ext_resource type="Script" uid="uid://l4xry7mouebv" path="res://scripts/player_states/duck_state.gd" id="5_5alnx"]
+[ext_resource type="Script" uid="uid://cfn3nhym2akce" path="res://scripts/player_states/die_state.gd" id="6_aocdc"]
+[ext_resource type="Script" uid="uid://dfkyvlr0oamtr" path="res://scripts/player_states/fly_state.gd" id="9_aocdc"]
+[ext_resource type="Script" uid="uid://cctfays17g35w" path="res://scripts/player_states/hit_state.gd" id="10_5alnx"]
 
 [sub_resource type="Animation" id="Animation_l4ej0"]
 length = 0.001
@@ -322,6 +322,7 @@ disable_speed_limit = true
 [node name="JumpState" type="Node" parent="Player/StateMachine" index="1" unique_id=93366632]
 script = ExtResource("4_aocdc")
 jump_high = 600.0
+max_jump_high = 1000.0
 
 [node name="HitState" type="Node" parent="Player/StateMachine" index="2" unique_id=1815474096]
 script = ExtResource("10_5alnx")
@@ -329,7 +330,7 @@ script = ExtResource("10_5alnx")
 [node name="FlyState" type="Node" parent="Player/StateMachine" index="3" unique_id=864021356]
 script = ExtResource("9_aocdc")
 jump_cut_factor = 0.1
-max_fall_speed = 50000.0
+max_fall_speed = 25000.0
 
 [node name="DuckState" type="Node" parent="Player/StateMachine" index="4" unique_id=2077205560]
 script = ExtResource("5_5alnx")

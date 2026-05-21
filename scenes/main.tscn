@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dhfqxbovmcyn4"]
 
-[ext_resource type="Script" uid="uid://brfly4dc7rwcf" path="res://scripts/Main/main.gd" id="1_jyhfs"]
+[ext_resource type="Script" uid="uid://ffqbcve5pm8u" path="res://scripts/Main/main.gd" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://drdrk8trdjvrf" path="res://scenes/title_ui.tscn" id="1_sugp2"]
 [ext_resource type="PackedScene" uid="uid://cpypoq2gk16py" path="res://scenes/enemy_example.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://u31a7glcvq2n" path="res://scenes/triax.tscn" id="4_jyhfs"]
-[ext_resource type="Script" uid="uid://cmdarjkp7xihh" path="res://scripts/EnemyExample/attack_hitbox.gd" id="5_tbgi4"]
+[ext_resource type="Script" uid="uid://lyqp05aslb2p" path="res://scripts/EnemyExample/attack_hitbox.gd" id="5_tbgi4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(815, 45)
