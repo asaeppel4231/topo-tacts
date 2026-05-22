@@ -46,9 +46,6 @@ func enter(msg := {}):
 	base.on_timeout_idle_timer = _on_timeout
 
 func physics_update(delta):
-	if actor.is_dead:
-		get_actor_statemachine().change_state(actor.die_state, prepared_message)
-
 	if is_grounded():
 		coyote_timer = coyote_time
 	else:

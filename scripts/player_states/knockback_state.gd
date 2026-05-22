@@ -9,4 +9,4 @@ func enter(msg := {}):
 
 func physics_update(delta):
 	if owner.player.is_on_floor():
-		owner.state_machine.change_state(owner.idle_state)
+		owner.state_machine.change_state(owner.idle_state, prepared_message)

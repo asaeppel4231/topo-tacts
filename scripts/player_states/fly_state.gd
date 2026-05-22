@@ -14,10 +14,6 @@ func enter(msg := {}):
 		print("FlyState entered: ", msg)
 
 func physics_update(delta):
-	if actor.is_dead:
-		return
-	
-	# Variable Sprunghöhe (Taste loslassen)
 	if Input.is_action_just_released("player_jump") and actor.velocity.y < 0:
 		actor.velocity.y *= jump_cut_factor
 

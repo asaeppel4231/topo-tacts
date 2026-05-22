@@ -17,5 +17,4 @@ func enter(msg := {}):
 		actor.velocity.y = speed_possible
 	else: 
 		actor.velocity.y = -jump_high
-	get_actor_statemachine().change_state(actor.fly_state, {"emitted-by": "JumpState",
-	"Reference": self})
+	get_actor_statemachine().change_state(actor.fly_state, prepared_message)

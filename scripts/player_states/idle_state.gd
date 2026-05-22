@@ -10,9 +10,6 @@ func enter(msg := {}):
 	actor.velocity.x = 0
 
 func handle_input(_event):
-	if actor.is_dead:
-		return
-
 	if Input.is_action_pressed("player_left") or Input.is_action_pressed("player_right"):
 		get_actor_statemachine().change_state(actor.run_state, {"emitted-by": "IdleState",
 		"Reference": self})
