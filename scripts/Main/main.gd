@@ -1,5 +1,8 @@
 extends Node2D
 
+@onready var time_helper := TimeHelper.new()
+@onready var tree_ctl    := TreeWrapper.new()
+
 @onready var title_ui := $TitleUI
 @onready var triax    := $Triax
 
@@ -12,6 +15,7 @@ extends Node2D
 #############################################
 
 func _ready() -> void:
+	add_child(tree_ctl)
 	UserData.setup()
 	UserData.load_config()
 	

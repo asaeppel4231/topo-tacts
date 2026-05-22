@@ -1,4 +1,4 @@
-extends "res://scripts/SettingsDialog/settings_dialog_utils.gd"
+extends "res://scripts/SettingsDialog/utils.gd"
 
 #############################################
 #            SPECIAL FUNCTIONS              #
@@ -16,13 +16,13 @@ func _unhandled_input(event):
 			unhandled_key_input_slider_state_save_base(volume_music_state, "volume-music")
 			unhandled_key_input_slider_state_save_base(volume_total_state, "volume")
 		if event.is_action_pressed("focus_1"):
-			difficulty_slider.grab_focus()
+			sliders.difficulty.  grab_focus()
 		elif event.is_action_pressed("focus_2"):
-			volume_sfx_slider.grab_focus()
+			sliders.volume_sfx.  grab_focus()
 		elif event.is_action_pressed("focus_3"):
-			volume_music_slider.grab_focus()
+			sliders.volume_music.grab_focus()
 		elif event.is_action_pressed("focus_4"):
-			volume_total_slider.grab_focus()
+			sliders.volume_total.grab_focus()
 
 func _process(_delta: float) -> void: # delta is unused here
 	pass
@@ -35,16 +35,16 @@ func _on_back_pressed() -> void:
 	close()
 
 func _on_help_pressed() -> void:
-	dialog_help.popup_centered()
+	dialogs.help.         popup_centered()
 
 func _on_reset_settings_pressed() -> void:
-	dialog_confirm_reset.popup_centered()
+	dialogs.confirm_reset.popup_centered()
 
 func _on_confirm_reset_confirmed() -> void:
 	UserData.reset()
 	init_sliders()
 	update_settings_last_changed_label()
-	difficulty_slider.value = 1 # 1 = NORMAL
+	sliders.difficulty.value = 1 # 1 = NORMAL
 	update_difficulty_text_label()
 	init_multiplayer_inputs()
 
@@ -53,20 +53,20 @@ func _on_confirm_reset_canceled() -> void:
 
 func _on_difficulty_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
-		handle_changed_slider_value_on_released_input("difficulty", difficulty_slider.value, false)
+		handle_changed_slider_value_on_released_input("difficulty", sliders.difficulty.value, false)
 		update_difficulty_text_label()
 
 func _on_volume_sfx_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
-		handle_changed_slider_value_on_released_input("volume-sfx", volume_sfx_slider.value)
+		handle_changed_slider_value_on_released_input("volume-sfx", sliders.volume_sfx.value)
 
 func _on_volume_music_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
-		handle_changed_slider_value_on_released_input("volume-music", volume_music_slider.value)
+		handle_changed_slider_value_on_released_input("volume-music", sliders.volume_music.value)
 
 func _on_volume_total_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
-		handle_changed_slider_value_on_released_input("volume", volume_total_slider.value)
+		handle_changed_slider_value_on_released_input("volume", sliders.volume_total.value)
 
 func _on_difficulty_slider_value_changed(value: float) -> void:
 	_on_slider_value_changed_base(difficulty_state, value)
@@ -83,8 +83,6 @@ func _on_volume_total_slider_value_changed(value: float) -> void:
 	update_audio_server_bus_db(AudioServer.get_bus_index("Master"), value)
 	_on_slider_value_changed_base(volume_total_state, value)
 
-
-
 func _on_lne_default_username_text_changed(new_text: String) -> void:
 	UserData.set_value("default-username", new_text)
 	update_settings_set_timestamp()
@@ -93,6 +91,5 @@ func _on_spb_default_port_value_changed(value: float) -> void:
 	UserData.set_value("default-port", int(value))
 	update_settings_set_timestamp()
 
-
 func _on_help_dialog_close_requested() -> void:
-	dialog_help.hide()
+	dialogs.help.hide()

@@ -46,7 +46,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TitleUILayer/btn_container:position")
+tracks/0/path = NodePath("TitleUILayer/GUI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -62,7 +62,7 @@ length = 3.0000000000000004
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TitleUILayer/btn_container:position")
+tracks/0/path = NodePath("TitleUILayer/GUI:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -108,7 +108,7 @@ offset_right = 860.0
 offset_bottom = 286.0
 texture = ExtResource("1_pfahe")
 
-[node name="btn_container" type="VBoxContainer" parent="TitleUILayer" unique_id=439312319]
+[node name="GUI" type="VBoxContainer" parent="TitleUILayer" unique_id=439312319]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -121,7 +121,7 @@ offset_bottom = 720.001
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="NewGame" type="Button" parent="TitleUILayer/btn_container" unique_id=171656925]
+[node name="NewGame" type="Button" parent="TitleUILayer/GUI" unique_id=171656925]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Opens a dialog with settings
@@ -130,7 +130,7 @@ theme = ExtResource("3_8op4g")
 shortcut = SubResource("Shortcut_nex2g")
 text = "New Game"
 
-[node name="LoadGame" type="Button" parent="TitleUILayer/btn_container" unique_id=6058292]
+[node name="LoadGame" type="Button" parent="TitleUILayer/GUI" unique_id=6058292]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Opens a dialog where you can select
@@ -139,7 +139,7 @@ theme = ExtResource("3_8op4g")
 shortcut = SubResource("Shortcut_aasqn")
 text = "Load Game"
 
-[node name="Settings" type="Button" parent="TitleUILayer/btn_container" unique_id=1252369427]
+[node name="Settings" type="Button" parent="TitleUILayer/GUI" unique_id=1252369427]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Opens a dialog where you can
@@ -148,7 +148,7 @@ theme = ExtResource("3_8op4g")
 shortcut = SubResource("Shortcut_8op4g")
 text = "Settings"
 
-[node name="Quit" type="Button" parent="TitleUILayer/btn_container" unique_id=142150224]
+[node name="Quit" type="Button" parent="TitleUILayer/GUI" unique_id=142150224]
 layout_mode = 2
 size_flags_vertical = 3
 tooltip_text = "Closes the game"
@@ -165,13 +165,13 @@ offset_bottom = -155.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1491613252]
 libraries/ = SubResource("AnimationLibrary_nex2g")
 
-[connection signal="focus_entered" from="TitleUILayer/btn_container/NewGame" to="." method="_on_button_focus_entered"]
-[connection signal="pressed" from="TitleUILayer/btn_container/NewGame" to="." method="_on_new_game_pressed"]
-[connection signal="focus_entered" from="TitleUILayer/btn_container/LoadGame" to="." method="_on_button_focus_entered"]
-[connection signal="pressed" from="TitleUILayer/btn_container/LoadGame" to="." method="_on_load_game_pressed"]
-[connection signal="focus_entered" from="TitleUILayer/btn_container/Settings" to="." method="_on_button_focus_entered"]
-[connection signal="pressed" from="TitleUILayer/btn_container/Settings" to="." method="_on_settings_pressed"]
-[connection signal="focus_entered" from="TitleUILayer/btn_container/Quit" to="." method="_on_button_focus_entered"]
-[connection signal="pressed" from="TitleUILayer/btn_container/Quit" to="." method="_on_quit_pressed"]
+[connection signal="focus_entered" from="TitleUILayer/GUI/NewGame" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TitleUILayer/GUI/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="focus_entered" from="TitleUILayer/GUI/LoadGame" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TitleUILayer/GUI/LoadGame" to="." method="_on_load_game_pressed"]
+[connection signal="focus_entered" from="TitleUILayer/GUI/Settings" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TitleUILayer/GUI/Settings" to="." method="_on_settings_pressed"]
+[connection signal="focus_entered" from="TitleUILayer/GUI/Quit" to="." method="_on_button_focus_entered"]
+[connection signal="pressed" from="TitleUILayer/GUI/Quit" to="." method="_on_quit_pressed"]
 [connection signal="visibility_changed" from="TitleUILayer/SettingsDialog" to="." method="_on_dialog_visibility_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
