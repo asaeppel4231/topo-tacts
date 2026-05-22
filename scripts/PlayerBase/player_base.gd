@@ -1,23 +1,6 @@
-extends Node2D
+extends "res://scripts/PlayerBase/player_base_prepared_vars.gd"
 
-#############################################
-#                   VARS                    #
-#############################################
-
-@onready var anim_player := $AnimationPlayer
-@onready var player      := $Player
-
-@onready var idle_timer      := $IdleTimer
-@onready var knockback_timer := $KnockbackTimer
-@onready var pause_timer := $PauseTimer
-@onready var invicibly_timer := $InvinciblyTimer
-
-var is_paused    := true
-
-@onready var on_timeout_idle_timer
-@onready var on_timeout_knockback_timer
-@onready var on_timeout_pause_timer
-@onready var on_timeout_invincibly_timer
+@onready var is_paused    := true
 
 #############################################
 #             INPUT HANDLING                #
@@ -30,16 +13,6 @@ func get_move_input() -> int:
 	elif Input.is_action_pressed("player_right"):
 		dir = 1
 	return dir
-
-#############################################
-#            SPECIAL FUNCTIONS              #
-#############################################
-
-func _ready() -> void:
-	pass
-	
-func _process(_delta):
-	pass
 
 #############################################
 #                 EVENTS                    #

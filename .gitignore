@@ -3,3 +3,6 @@
 
 .godot/
 
+*.so
+*.os
+*.dblite
