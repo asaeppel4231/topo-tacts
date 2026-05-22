@@ -10,8 +10,8 @@ func change_state(new_state: State, msg := {}):
 		if current_state:
 			current_state.exit()
 		current_state = new_state
-		if UserData.get_value("debug") == 1:
-			await get_tree().process_frame
+#		if UserData.get_value("debug") == 1:
+#			await get_tree().process_frame
 		current_state.actor = actor
 		current_state.base = base
 		current_state.enter(msg)

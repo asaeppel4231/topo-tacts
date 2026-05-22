@@ -3,7 +3,6 @@ class_name HitState
 
 @export var max_health: int = 100
 
-
 var health: int
 
 @onready var prepared_message := {"emitted-by": "HitState", "Reference": self}
