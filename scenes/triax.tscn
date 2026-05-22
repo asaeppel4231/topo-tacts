@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bcvudtdp1x5te" path="res://scripts/player_states/jump_state.gd" id="4_aocdc"]
 [ext_resource type="Script" uid="uid://l4xry7mouebv" path="res://scripts/player_states/duck_state.gd" id="5_5alnx"]
 [ext_resource type="Script" uid="uid://cfn3nhym2akce" path="res://scripts/player_states/die_state.gd" id="6_aocdc"]
+[ext_resource type="Script" uid="uid://daq00ib0ca1kf" path="res://scripts/player_states/knockback_state.gd" id="6_b0umx"]
 [ext_resource type="Script" uid="uid://dfkyvlr0oamtr" path="res://scripts/player_states/fly_state.gd" id="9_aocdc"]
 [ext_resource type="Script" uid="uid://cctfays17g35w" path="res://scripts/player_states/hit_state.gd" id="10_5alnx"]
 
@@ -326,19 +327,24 @@ max_jump_high = 1000.0
 
 [node name="HitState" type="Node" parent="Player/StateMachine" index="2" unique_id=1815474096]
 script = ExtResource("10_5alnx")
+max_health = 1
 
-[node name="FlyState" type="Node" parent="Player/StateMachine" index="3" unique_id=864021356]
+[node name="KnockbackState" type="Node" parent="Player/StateMachine" index="3" unique_id=635347146]
+script = ExtResource("6_b0umx")
+metadata/_custom_type_script = "uid://daq00ib0ca1kf"
+
+[node name="FlyState" type="Node" parent="Player/StateMachine" index="4" unique_id=864021356]
 script = ExtResource("9_aocdc")
 jump_cut_factor = 0.1
 max_fall_speed = 25000.0
 
-[node name="DuckState" type="Node" parent="Player/StateMachine" index="4" unique_id=2077205560]
+[node name="DuckState" type="Node" parent="Player/StateMachine" index="5" unique_id=2077205560]
 script = ExtResource("5_5alnx")
 
-[node name="IdleState" type="Node" parent="Player/StateMachine" index="5" unique_id=1956622612]
+[node name="IdleState" type="Node" parent="Player/StateMachine" index="6" unique_id=1956622612]
 script = ExtResource("2_p5fw0")
 
-[node name="DieState" type="Node" parent="Player/StateMachine" index="6" unique_id=1625199347]
+[node name="DieState" type="Node" parent="Player/StateMachine" index="7" unique_id=1625199347]
 script = ExtResource("6_aocdc")
 
 [node name="Image" parent="Player/FlipNode/Models" parent_id_path=PackedInt32Array(1474781210) index="0" unique_id=1239463901]

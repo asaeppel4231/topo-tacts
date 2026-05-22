@@ -20,8 +20,12 @@ func apply_damage(event: DamageEvent) -> void:
 	temp.source     = event.source
 	temp.knockback  = event.knockback
 	temp.direct_die = event.direct_die
+	temp.state_before = state_machine.current_state
 	state_machine.change_state(hit_state, temp)
-	
+
+func is_grounded() -> bool:
+	return ground_ray_left.is_colliding() or ground_ray_right.is_colliding()
+
 #############################################
 #            SPECIAL FUNCTIONS              #
 #############################################
@@ -37,5 +41,5 @@ func _ready():
 	else:
 		state_machine.change_state(run_state, prepared_message)
 
-func _physics_process(delta):
+func _physics_process(_delta): # delta is unused here
 	move_and_slide()

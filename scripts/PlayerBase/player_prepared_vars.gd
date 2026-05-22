@@ -11,10 +11,11 @@ extends CharacterBody2D
 @onready var state_machine    := $StateMachine
 @onready var hitbox_collision := $Hitbox_collision
 
-@onready var run_state  := $StateMachine/RunState
-@onready var jump_state := $StateMachine/JumpState
-@onready var hit_state := $StateMachine/HitState
-@onready var fly_state  := $StateMachine/FlyState
-@onready var duck_state := $StateMachine/DuckState
-@onready var idle_state := $StateMachine/IdleState
-@onready var die_state  := $StateMachine/DieState
+@onready var run_state       := $StateMachine/RunState
+@onready var jump_state      := $StateMachine/JumpState
+@onready var hit_state       := $StateMachine/HitState
+@onready var knockback_state := $StateMachine/KnockbackState
+@onready var fly_state       := $StateMachine/FlyState
+@onready var duck_state      := $StateMachine/DuckState
+@onready var idle_state      := $StateMachine/IdleState
+@onready var die_state       := $StateMachine/DieState

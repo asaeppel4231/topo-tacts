@@ -46,7 +46,7 @@ func enter(msg := {}):
 	base.on_timeout_idle_timer = _on_timeout
 
 func physics_update(delta):
-	if is_grounded():
+	if actor.is_grounded():
 		coyote_timer = coyote_time
 	else:
 		coyote_timer -= delta
