@@ -10,7 +10,7 @@ var knockback_time_left := 1.0
 var msg2 := {}
 
 func apply_knockback() -> void:
-	knockback_time_left = 0.15   # Time of the Knockback
+	knockback_time_left = knockback_time
 
 func enter(msg := {}):
 	if UserData.get_value("debug") == 1:
@@ -21,12 +21,9 @@ func enter(msg := {}):
 
 func physics_update(delta):
 	knockback_time_left -= delta
-	if not actor:
-		push_error("actor is null!!!")
-		return
 	if actor.is_grounded():
-		get_actor_statemachine().change_state(actor.run_state, prepared_message)
+		get_actor_statemachine().change_state(actor.states.run, prepared_message)
 	elif knockback_time_left <= 0.0:
-		get_actor_statemachine().change_state(actor.fly_state, prepared_message)
+		get_actor_statemachine().change_state(actor.states.fly, prepared_message)
 	if msg2:
 		actor.velocity = msg2.knockback

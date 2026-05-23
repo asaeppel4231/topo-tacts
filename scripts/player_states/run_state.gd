@@ -51,7 +51,7 @@ func physics_update(delta):
 	else:
 		coyote_timer -= delta
 		if coyote_timer <= 0.0:
-			get_actor_statemachine().change_state(actor.fly_state, prepared_message)
+			get_actor_statemachine().change_state(actor.states.fly, prepared_message)
 	
 	dir = base.get_move_input()
 
@@ -74,9 +74,9 @@ func physics_update(delta):
 	if Input.is_action_just_pressed("player_jump"):
 		if dir == 0:
 			actor.speed = 1
-		get_actor_statemachine().change_state(actor.jump_state, prepared_message)
+		get_actor_statemachine().change_state(actor.states.jump, prepared_message)
 	if Input.is_action_just_pressed("player_duck"):
-		get_actor_statemachine().change_state(actor.duck_state, prepared_message)
+		get_actor_statemachine().change_state(actor.states.duck, prepared_message)
 	
 func _on_timeout():
-	get_actor_statemachine().change_state(actor.idle_state, prepared_message)
+	get_actor_statemachine().change_state(actor.states.idle, prepared_message)

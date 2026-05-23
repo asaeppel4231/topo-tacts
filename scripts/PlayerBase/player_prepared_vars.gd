@@ -1,21 +1,31 @@
 extends CharacterBody2D
 
-@onready var far_ground_ray   := $FarGroundRay
-@onready var ground_ray_left  := $GroundRayLeft
-@onready var ground_ray_right := $GroundRayRight
+@onready var raycasts        = {
+	"far_ground":            get_node("FarGroundRay") ,
+	"ground"    : {
+		"left"  :            get_node("GroundRayLeft"),
+		"right":             get_node("GroundRayRight")              
+	}
+}
+
+@onready var state_machine    := $StateMachine
+
+@onready var states           = {
+	"run"      :             state_machine.get_node("RunState")      ,
+	"jump"     :             state_machine.get_node("JumpState")     ,
+	"hit"      :             state_machine.get_node("HitState")      ,
+	"knockback":             state_machine.get_node("KnockbackState"),
+	"fly"      :             state_machine.get_node("FlyState")      ,
+	"duck"     :             state_machine.get_node("DuckState")     ,
+	"idle"     :             state_machine.get_node("IdleState")     ,
+	"die"      :             state_machine.get_node("DieState")
+}
+
 @onready var player_cam       := $PlayerCamera
 @onready var flip_node        := $FlipNode
-@onready var models           := $FlipNode/Models
-@onready var hitbox           := $FlipNode/Models/Hitbox
-@onready var image            := $FlipNode/Models/Image
-@onready var state_machine    := $StateMachine
-@onready var hitbox_collision := $Hitbox_collision
 
-@onready var run_state       := $StateMachine/RunState
-@onready var jump_state      := $StateMachine/JumpState
-@onready var hit_state       := $StateMachine/HitState
-@onready var knockback_state := $StateMachine/KnockbackState
-@onready var fly_state       := $StateMachine/FlyState
-@onready var duck_state      := $StateMachine/DuckState
-@onready var idle_state      := $StateMachine/IdleState
-@onready var die_state       := $StateMachine/DieState
+@onready var models           := flip_node.get_node("Models")
+@onready var hitbox           := models.get_node("Hitbox")
+@onready var image            := models.get_node("Image")
+
+@onready var hitbox_collision := $Hitbox_collision

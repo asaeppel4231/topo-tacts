@@ -11,13 +11,10 @@ func enter(msg := {}):
 
 func handle_input(_event):
 	if Input.is_action_pressed("player_left") or Input.is_action_pressed("player_right"):
-		get_actor_statemachine().change_state(actor.run_state, {"emitted-by": "IdleState",
-		"Reference": self})
+		get_actor_statemachine().change_state(actor.states.run, prepared_message)
 
 	if Input.is_action_just_pressed("player_jump"):
-		get_actor_statemachine().change_state(actor.jump_state, {"emitted-by": "IdleState",
-		"Reference": self})
+		get_actor_statemachine().change_state(actor.states.jump, prepared_message)
 
 	if Input.is_action_pressed("player_duck"):
-		get_actor_statemachine().change_state(actor.duck_state, {"emitted-by": "IdleState",
-		"Reference": self})
+		get_actor_statemachine().change_state(actor.duck_state, prepared_message)

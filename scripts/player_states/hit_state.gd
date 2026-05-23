@@ -15,13 +15,15 @@ func apply_damage(msg := {}) -> void:
 func take_damage(amount: int) -> void:
 	health -= amount
 	if health == 0 or health < 0:
-		get_actor_statemachine().change_state(actor.die_state, prepared_message)
+		get_actor_statemachine().change_state(actor.states.die, prepared_message)
 
 func enter(msg := {}):
 	if UserData.get_value("debug") == 1:
 		print("HitState entered: ", msg)
 	base_anim_player_play_anim("hit")
 	apply_damage(msg)
+	if health <= 0:
+		return
 	var temp := prepared_message
 	temp.knockback = msg.knockback
-	get_actor_statemachine().change_state(actor.knockback_state, temp)
+	get_actor_statemachine().change_state(actor.states.knockback, temp)

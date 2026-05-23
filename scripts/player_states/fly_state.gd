@@ -22,4 +22,4 @@ func physics_update(delta):
 	actor.velocity.y = min(actor.velocity.y, max_fall_speed)
 
 	if actor.is_grounded() and actor.velocity.y >= 0:
-		get_actor_statemachine().change_state(actor.run_state, prepared_message)
+		get_actor_statemachine().change_state(actor.states.run, prepared_message)

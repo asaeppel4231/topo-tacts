@@ -309,10 +309,7 @@ _data = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0" unique_id=1828760442]
 libraries/ = SubResource("AnimationLibrary_l4ej0")
 
-[node name="Player" parent="." index="1" unique_id=2002950373]
-metadata/_edit_lock_ = true
-
-[node name="StateMachine" type="Node" parent="Player" index="4" unique_id=1551342151]
+[node name="StateMachine" type="Node" parent="Player" parent_id_path=PackedInt32Array(2002950373) index="4" unique_id=1551342151]
 script = ExtResource("3_r40s8")
 
 [node name="RunState" type="Node" parent="Player/StateMachine" index="0" unique_id=1889701023]
@@ -357,7 +354,7 @@ position = Vector2(-0.5, -0.5)
 [node name="Hitbox_hitted" parent="Player/FlipNode/Models/Hitbox" index="0" unique_id=248064810]
 position = Vector2(0, 1)
 
-[node name="Hitbox_collision" parent="Player" index="6" unique_id=947587078]
+[node name="Hitbox_collision" parent="Player" parent_id_path=PackedInt32Array(2002950373) index="6" unique_id=947587078]
 position = Vector2(0, 1)
 
 [node name="IdleTimer" parent="." index="2" unique_id=247088768]
