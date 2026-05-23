@@ -1,4 +1,4 @@
-extends State
+extends    IsPlayerState
 class_name DuckState
 
 @onready var prepared_message := {"emitted-by": "DuckState", "Reference": self}

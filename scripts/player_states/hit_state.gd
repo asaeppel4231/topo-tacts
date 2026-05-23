@@ -1,11 +1,12 @@
-extends HasAnimationsHelper
+extends    IsPlayerState
 class_name HitState
 
-@export var max_health: int = 100
+@onready var prepared_message := {"emitted-by": "HitState", "Reference": self}
 
+@export var max_health: int = 100
 var health: int
 
-@onready var prepared_message := {"emitted-by": "HitState", "Reference": self}
+var already_initialized: bool = false
 
 func apply_damage(msg := {}) -> void:
 	if msg.direct_die:
@@ -20,6 +21,9 @@ func take_damage(amount: int) -> void:
 func enter(msg := {}):
 	if UserData.get_value("debug") == 1:
 		print("HitState entered: ", msg)
+	if not already_initialized:
+		health = max_health
+		already_initialized = true
 	base_anim_player_play_anim("hit")
 	apply_damage(msg)
 	if health <= 0:

@@ -1,4 +1,4 @@
-extends State
+extends    IsPlayerState
 class_name PauseState
 
 func enter(_msg := {}):

@@ -1,4 +1,4 @@
-extends HasAnimationsHelper
+extends    IsPlayerState
 class_name JumpState
 
 @export var jump_high    := 300.0

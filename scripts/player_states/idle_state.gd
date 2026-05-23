@@ -1,4 +1,4 @@
-extends HasAnimationsHelper
+extends    IsPlayerState
 class_name IdleState
 
 @onready var prepared_message := {"emitted-by": "IdleState", "Reference": self}

@@ -1,4 +1,4 @@
-extends HasAnimationsHelper
+extends    IsPlayerState
 class_name FlyState
 
 @export var gravity := 900.0

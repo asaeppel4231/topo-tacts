@@ -324,7 +324,6 @@ max_jump_high = 1000.0
 
 [node name="HitState" type="Node" parent="Player/StateMachine" index="2" unique_id=1815474096]
 script = ExtResource("10_5alnx")
-max_health = 1
 
 [node name="KnockbackState" type="Node" parent="Player/StateMachine" index="3" unique_id=635347146]
 script = ExtResource("6_b0umx")
@@ -349,12 +348,14 @@ texture = ExtResource("2_x3foc")
 region_rect = Rect2(6.8199997, 0, 25.68, 83)
 
 [node name="Hitbox" parent="Player/FlipNode/Models" parent_id_path=PackedInt32Array(1474781210) index="1" unique_id=253341313]
+visible = true
 position = Vector2(-0.5, -0.5)
 
 [node name="Hitbox_hitted" parent="Player/FlipNode/Models/Hitbox" index="0" unique_id=248064810]
 position = Vector2(0, 1)
 
 [node name="Hitbox_collision" parent="Player" parent_id_path=PackedInt32Array(2002950373) index="6" unique_id=947587078]
+visible = true
 position = Vector2(0, 1)
 
 [node name="IdleTimer" parent="." index="2" unique_id=247088768]

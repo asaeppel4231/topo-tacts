@@ -1,4 +1,4 @@
-extends HasMovementHelper
+extends    IsPlayerState
 class_name RunState
 
 var dir      := 0
@@ -43,7 +43,7 @@ func enter(msg := {}):
 		base_anim_player_play_anim("run_loop")
 	else:
 		base_anim_player_play_anim("run_loop") # Skip run_start animation
-	base.on_timeout_idle_timer = _on_timeout
+	connect_signal(base.idle_timer.timeout, _on_timeout)
 
 func physics_update(delta):
 	if actor.is_grounded():

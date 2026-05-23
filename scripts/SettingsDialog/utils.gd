@@ -34,7 +34,7 @@ func init_multiplayer_inputs():
 	default_port_spb.value    = float(UserData.get_value("default-port", 1024.0))
 
 func update_settings_last_changed_label():
-	var ts = UserData.get_value("settings-last-changed", null)
+	var ts = UserData.get_value("settings-last-changed")
 	if ts == null:
 		labels.settings_last_changed.hide()
 		return

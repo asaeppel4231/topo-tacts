@@ -1,29 +1,34 @@
-extends State
+extends    IsPlayerState
 class_name KnockbackState
 
 @onready var prepared_message := {"emitted-by": "KnockbackState", "Reference": self}
 
 @export var knockback_time := 0.15
 
-var knockback_time_left := 1.0
+var knockback_done  := false
 
-var msg2 := {}
+var saved_knockback := Vector2.ZERO
 
-func apply_knockback() -> void:
-	knockback_time_left = knockback_time
+func start_knockback() -> void:
+	base.knockback_timer.start(knockback_time)
 
 func enter(msg := {}):
 	if UserData.get_value("debug") == 1:
 		print("KnockbackState entered: ", msg)
 	base_anim_player_play_anim("hurt")
-	apply_knockback()
-	msg2 = msg
+	connect_signal(base.knockback_timer.timeout, _on_timeout)
+	start_knockback()
+	saved_knockback = msg.knockback
 
-func physics_update(delta):
-	knockback_time_left -= delta
-	if actor.is_grounded():
+func physics_update(_delta): # delta is unused here
+	if not knockback_done:
+		actor.velocity = saved_knockback
+		return
+	elif actor.is_grounded():
 		get_actor_statemachine().change_state(actor.states.run, prepared_message)
-	elif knockback_time_left <= 0.0:
+	else:
 		get_actor_statemachine().change_state(actor.states.fly, prepared_message)
-	if msg2:
-		actor.velocity = msg2.knockback
+
+func _on_timeout():
+	knockback_done = true
+	base.knockback_timer.stop()
