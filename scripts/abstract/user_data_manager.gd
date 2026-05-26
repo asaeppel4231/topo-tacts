@@ -7,12 +7,12 @@ var data: Dictionary = {}
 
 const CONFIG_FILENAME = "config.json"
 
-func setup():
+func setup() -> void:
 	var home_dir := OS.get_user_data_dir()
 	config_dir = home_dir
 	config_file = config_dir + "/" + CONFIG_FILENAME
 
-func load_config():
+func load_config() -> void:
 	DirAccess.make_dir_recursive_absolute(config_dir)
 
 	if FileAccess.file_exists(config_file):
@@ -35,14 +35,14 @@ func load_config():
 		data = {}
 		save_config()
 
-func save_config():
+func save_config() -> void:
 	DirAccess.make_dir_recursive_absolute(config_dir)
 	var file := FileAccess.open(config_file, FileAccess.WRITE)
 	if file == null:
 		push_error("Could not open config file for writing!")
 		return
 
-	# Alphabetisch sortieren
+	# Sort alphabetically
 	var sorted_keys := data.keys()
 	sorted_keys.sort()
 
@@ -53,14 +53,14 @@ func save_config():
 	var json_text := JSON.stringify(sorted_data, "\t")
 	file.store_string(json_text)
 
-func set_value(key: String, value):
+func set_value(key: String, value) -> void:
 	data[key] = value
 	save_config()
 
-func get_value(key: String, default = null):
+func get_value(key: String, default = null) -> Variant:
 	return data.get(key, default)
 
-func reset():
+func reset() -> void:
 	DirAccess.remove_absolute(config_file)
 	data = {}
 	set_value("settings-last-changed", Time.get_unix_time_from_system())

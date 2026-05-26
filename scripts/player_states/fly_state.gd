@@ -2,18 +2,20 @@ extends    IsPlayerState
 class_name FlyState
 
 @export var gravity := 900.0
-@export var jump_cut_factor := 0.5   # Für variable Sprunghöhe
+@export var jump_cut_factor := 0.5
 @export var max_fall_speed := 1200.0
 
 @onready var prepared_message := {"emitted-by": "FlyState", "Reference": self}
 
-func enter(msg := {}):
-	if actor.velocity.x > 10:
-		actor.velocity.x = 8
+func enter(msg := {}) -> void:
 	if UserData.get_value("debug") == 1:
 		print("FlyState entered: ", msg)
+	interruptible = true
+	allowed_transitions = [actor.states.run]
+	if actor.velocity.x > 10:
+		actor.velocity.x = 8
 
-func physics_update(delta):
+func physics_update(delta) -> void:
 	if Input.is_action_just_released("player_jump") and actor.velocity.y < 0:
 		actor.velocity.y *= jump_cut_factor
 

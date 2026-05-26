@@ -5,9 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://cpypoq2gk16py" path="res://scenes/enemy_example.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://u31a7glcvq2n" path="res://scenes/triax.tscn" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://lyqp05aslb2p" path="res://scripts/EnemyExample/attack_hitbox.gd" id="5_tbgi4"]
+[ext_resource type="Texture2D" uid="uid://bey03le84ytwf" path="res://assets/example_enemy/example_enemy.png" id="5_tefeu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(815, 45)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fbr5l"]
+size = Vector2(278, 135)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrsce"]
+size = Vector2(286, 136)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tbgi4"]
 size = Vector2(7234, 119)
@@ -22,7 +29,7 @@ script = ExtResource("1_jyhfs")
 visible = false
 
 [node name="Triax" parent="." unique_id=1908255213 instance=ExtResource("4_jyhfs")]
-position = Vector2(99.285, 0)
+position = Vector2(654, 391)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1207698390]
 collision_layer = 2
@@ -38,18 +45,36 @@ shape = SubResource("RectangleShape2D_o5qli")
 [node name="EnemyExample" parent="." unique_id=1824407134 instance=ExtResource("2_sugp2")]
 position = Vector2(1515, 460)
 
+[node name="EnemyExample2" type="StaticBody2D" parent="." unique_id=1827203167]
+position = Vector2(199, 263)
+collision_layer = 4
+
+[node name="Image" type="Sprite2D" parent="EnemyExample2" unique_id=1601416206]
+texture = ExtResource("5_tefeu")
+
+[node name="Hitbox_Collision" type="CollisionShape2D" parent="EnemyExample2" unique_id=1122162772]
+shape = SubResource("RectangleShape2D_fbr5l")
+
+[node name="AttackHitbox" type="Area2D" parent="EnemyExample2" unique_id=1303810236]
+collision_layer = 16
+script = ExtResource("5_tbgi4")
+knockback = Vector2(7000, -1000)
+
+[node name="Hitbox_Hitted" type="CollisionShape2D" parent="EnemyExample2/AttackHitbox" unique_id=1529111319]
+shape = SubResource("RectangleShape2D_vrsce")
+
 [node name="BottomBorder" type="StaticBody2D" parent="." unique_id=123445985]
 visible = false
 position = Vector2(0, 1489)
 collision_layer = 8
 
-[node name="Image" type="Sprite2D" parent="BottomBorder" unique_id=1601416206]
+[node name="Image" type="Sprite2D" parent="BottomBorder" unique_id=1481207918]
 
-[node name="Hitbox_Collision" type="CollisionShape2D" parent="BottomBorder" unique_id=1122162772]
+[node name="Hitbox_Collision" type="CollisionShape2D" parent="BottomBorder" unique_id=275537323]
 position = Vector2(0, -163.5)
 shape = SubResource("RectangleShape2D_tbgi4")
 
-[node name="AttackHitbox" type="Area2D" parent="BottomBorder" unique_id=1303810236]
+[node name="AttackHitbox" type="Area2D" parent="BottomBorder" unique_id=950896285]
 position = Vector2(0, -172)
 collision_layer = 16
 script = ExtResource("5_tbgi4")
@@ -57,8 +82,9 @@ damage_amount = 0
 knockback = Vector2(-100, 10)
 direct_die = true
 
-[node name="Hitbox_Hitted" type="CollisionShape2D" parent="BottomBorder/AttackHitbox" unique_id=1529111319]
+[node name="Hitbox_Hitted" type="CollisionShape2D" parent="BottomBorder/AttackHitbox" unique_id=103674483]
 position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_tefeu")
 
+[connection signal="body_entered" from="EnemyExample2/AttackHitbox" to="EnemyExample2/AttackHitbox" method="_on_body_entered"]
 [connection signal="body_entered" from="BottomBorder/AttackHitbox" to="BottomBorder/AttackHitbox" method="_on_body_entered"]

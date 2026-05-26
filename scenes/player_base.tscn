@@ -15,6 +15,8 @@ script = ExtResource("1_q051v")
 [node name="Player" type="CharacterBody2D" parent="." unique_id=2002950373]
 collision_mask = 30
 script = ExtResource("2_tp51p")
+player_name = "dummy"
+max_health = -10.0
 
 [node name="GroundRayLeft" type="RayCast2D" parent="Player" unique_id=1152728824]
 position = Vector2(-50, 40)
@@ -56,14 +58,7 @@ visible = false
 shape = SubResource("RectangleShape2D_v55d4")
 
 [node name="IdleTimer" type="Timer" parent="." unique_id=247088768]
-wait_time = 5.970000000000001
 
 [node name="KnockbackTimer" type="Timer" parent="." unique_id=1976908159]
 
-[node name="PauseTimer" type="Timer" parent="." unique_id=1380480251]
-
-[node name="InvinciblyTimer" type="Timer" parent="." unique_id=2042201385]
-wait_time = 0.5
-
 [connection signal="body_entered" from="Player/FlipNode/Models/Hitbox" to="." method="_on_hitbox_body_entered"]
-

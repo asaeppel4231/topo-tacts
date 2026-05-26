@@ -31,7 +31,7 @@ func _process(_delta: float) -> void: # delta is unused
 	if Input.is_action_just_pressed("reload (DEBUG)"):
 		tree_ctl.restart_game()
 
-func test_map():
+func test_map() -> void:
 	triax.player.make_pcam_current()
 	title_ui.hide_all()
 	triax.show()

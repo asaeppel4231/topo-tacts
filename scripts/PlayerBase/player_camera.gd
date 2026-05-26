@@ -4,7 +4,7 @@ extends Camera2D
 @export var min_zoom := 0.1
 @export var max_zoom := 3.0
 
-func _unhandled_input(event):
+func _unhandled_input(event) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			zoom -= Vector2(zoom_speed, zoom_speed)

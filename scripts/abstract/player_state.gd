@@ -3,31 +3,32 @@ class_name IsPlayerState
 
 var _connections: Array = []
 
-func connect_signal(sig: Signal, callable: Callable):
+###########################################################
+#                       UTILITIES                         #
+###########################################################
+
+func connect_signal(sig: Signal, callable: Callable) -> void:
 	sig.connect(callable)
 	_connections.append([sig, callable])
 
-func get_actor_statemachine():
+func get_actor_statemachine() -> StateMachine:
 	return actor.state_machine
 
-func base_anim_player_play_anim(anim_name: String):
+func base_anim_player_play_anim(anim_name: String) -> void:
 	base.anim_player.play(anim_name)
 
-func base_anim_player_stop():
+func base_anim_player_stop() -> void:
 	base.anim_player.stop()
 
-func base_anim_player_pause():
+func base_anim_player_pause() -> void:
 	base.anim_player.pause()
 
-func base_anim_player_resume():
+func base_anim_player_resume() -> void:
 	base.anim_player.play()
 
-func exit():
-	base_anim_player_stop()
-	base.idle_timer.stop()
-	base.knockback_timer.stop()
-	base.pause_timer.stop()
-	base.invincibly_timer.stop()
+func exit() -> void:
+	base.timers.idle.stop()
+	base.timers.knockback.stop()
 
 	for pair in _connections:
 		var sig = pair[0]

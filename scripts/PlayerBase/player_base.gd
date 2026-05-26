@@ -2,9 +2,9 @@ extends "res://scripts/PlayerBase/player_base_prepared_vars.gd"
 
 @onready var is_paused    := true
 
-#############################################
-#             INPUT HANDLING                #
-#############################################
+###########################################################
+#                     INPUT HANDLING                      #
+###########################################################
 
 func get_move_input() -> int:
 	var dir = 0
@@ -13,3 +13,8 @@ func get_move_input() -> int:
 	elif Input.is_action_pressed("player_right"):
 		dir = 1
 	return dir
+
+func _ready() -> void:
+	if not check_all():
+		push_error("[PLAYERBASE] Some checks were not successful")
+		return

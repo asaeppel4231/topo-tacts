@@ -1,8 +1,8 @@
 extends "res://scripts/TitleUI/utils.gd"
 
-#############################################
-#            SPECIAL FUNCTIONS              #
-#############################################
+###########################################################
+#                   SPECIAL FUNCTIONS                     #
+###########################################################
 
 func _ready() -> void:
 	set_process_unhandled_input(true)
@@ -15,35 +15,35 @@ func _unhandled_input(event):
 		if not lookup_settings_dialog().visible: # fix, see last function of this file
 			skip_animation()
 
-#############################################
-#                 EVENTS                    #
-#############################################
+###########################################################
+#                         EVENTS                          #
+###########################################################
 
-#############################################
-#          NEW GAME BUTTON RELATED          #
-#############################################
+###########################################################
+#                NEW GAME BUTTON RELATED                  #
+###########################################################
 
 func _on_new_game_pressed() -> void:
 	if UserData.get_value("debug") == 1:
 		get_parent().test_map()
 
-#############################################
-#          LOAD GAME BUTTON RELATED         #
-#############################################
+###########################################################
+#                LOAD GAME BUTTON RELATED                 #
+###########################################################
 
 func _on_load_game_pressed() -> void:
-	pass # Replace with function body.
+	pass
 
-#############################################
-#         SETTINGS BUTTON RELATED           #
-#############################################
+###########################################################
+#                SETTINGS BUTTON RELATED                  #
+###########################################################
 
 func _on_settings_pressed() -> void:
 	lookup_settings_dialog().open() # fix, see last function of this file
 
-#############################################
-#           QUIT BUTTON RELATED             #
-#############################################
+###########################################################
+#                  QUIT BUTTON RELATED                    #
+###########################################################
 
 func _on_quit_pressed() -> void:
 	anim_state = "outro"
@@ -52,28 +52,28 @@ func _on_quit_pressed() -> void:
 	await anim_player.animation_finished
 	get_tree().current_scene.tree_ctl.quit_game()
 
-#############################################
-#         TITLE UI BUTTONS RELATED          #
-#############################################
+###########################################################
+#                    BUTTONS RELATED                      #
+###########################################################
 
 func _on_button_focus_entered() -> void:
 	set_last_focused_button()
 	
-#############################################
-#        ANIMATION PLAYER RELATED           #
-#############################################
+###########################################################
+#                ANIMATION PLAYER RELATED                 #
+###########################################################
 
 func _on_animation_player_animation_finished(anim_name: String) -> void:
 	handle_animation_player_finished(anim_name)
 
-#############################################
-#           DIALOG CLOSE RELATED            #
-#############################################
+###########################################################
+#                  DIALOG CLOSE RELATED                   #
+###########################################################
 
 # BUG: If the SettingsDialog is visible, then the settings_dialog variable is nil!!! 
 # Otherwise it works correctly. I think it's an engine bug like the time-bug, 
 # documented in the TimeHelper class.
-# FIX: (Quick and Dirty): Use each time the get_node() Node asking way instead of the variable
+# FIX: (quick and dirty): Use each time the get_node() Node asking way instead of the variable
 func _on_dialog_visibility_changed() -> void:
 	if not lookup_settings_dialog().visible:
 		restore_last_focused_button_focus()

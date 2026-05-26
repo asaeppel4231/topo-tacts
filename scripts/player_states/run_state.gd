@@ -16,36 +16,36 @@ var timer_started := false
 @export var coyote_time := 0.1
 var coyote_timer := 0.0
 
-func move(direction: int):
+func move(direction: int) -> void:
 	actor.velocity.x = lerp(actor.velocity.x, direction * actor.speed, 0.2)
 
-func increase_speed():
+func increase_speed() -> void:
 	if disable_speed_limit:
 		actor.speed += speed_increase
 	elif actor.speed <= (max_speed - speed_increase):
 		actor.speed += speed_increase
 
-func decrease_speed_if_limit_activated():
+func decrease_speed_if_limit_activated() -> void:
 	if disable_speed_limit:
 		return
 	if actor.speed > 0:
 		actor.speed -= speed_increase
 
-func enter(msg := {}):
+func enter(msg := {}) -> void:
 	dir = 0
 	actor.speed = default_speed
 	if UserData.get_value("debug") == 1:
 		print("RunState entered: ", msg)
 	if msg.get("emitted-by") == "IdleState":
-		base_anim_player_play_anim("run_start")
+		base_anim_player_play_anim("Triax/run_start")
 		actor.flip_node.scale.x = dir
 		await base.anim_player.animation_finished
-		base_anim_player_play_anim("run_loop")
+		base_anim_player_play_anim("Triax/run_loop")
 	else:
-		base_anim_player_play_anim("run_loop") # Skip run_start animation
-	connect_signal(base.idle_timer.timeout, _on_timeout)
+		base_anim_player_play_anim("Triax/run_loop") # Skip run_start animation
+	connect_signal(base.timers.idle.timeout, _on_timeout)
 
-func physics_update(delta):
+func physics_update(delta) -> void:
 	if actor.is_grounded():
 		coyote_timer = coyote_time
 	else:
@@ -61,15 +61,15 @@ func physics_update(delta):
 		timer_started = false
 		actor.flip_node.scale.x = dir
 		move(dir)
-		base.idle_timer.stop()
+		base.timers.idle.stop()
 	else:
 		decrease_speed_if_limit_activated()
 		if not timer_started:
 			timer_started = true
 			await base.get_tree().process_frame
-			base.idle_timer.start()
+			base.timers.idle.start()
 		actor.velocity.x = 0
-		if base.anim_player.get_current_animation() == "run_loop":
+		if base.anim_player.get_current_animation() == "Triax/run_loop":
 			base_anim_player_pause()
 	if Input.is_action_just_pressed("player_jump"):
 		if dir == 0:
@@ -78,5 +78,5 @@ func physics_update(delta):
 	if Input.is_action_just_pressed("player_duck"):
 		get_actor_statemachine().change_state(actor.states.duck, prepared_message)
 	
-func _on_timeout():
+func _on_timeout() -> void:
 	get_actor_statemachine().change_state(actor.states.idle, prepared_message)

@@ -6,10 +6,10 @@ class_name JumpState
 
 @onready var prepared_message := {"emitted-by": "JumpState", "Reference": self}
 
-func enter(msg := {}):
+func enter(msg := {}) -> void:
 	if UserData.get_value("debug") == 1:
 		print("JumpState entered: ", msg)
-	base_anim_player_play_anim("jump")
+	base_anim_player_play_anim("Triax/jump")
 	if msg.get("emitted-by") == "RunState":
 		var speed_possible = actor.speed * -jump_high
 		if speed_possible > max_jump_high:

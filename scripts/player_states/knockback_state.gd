@@ -10,17 +10,18 @@ var knockback_done  := false
 var saved_knockback := Vector2.ZERO
 
 func start_knockback() -> void:
-	base.knockback_timer.start(knockback_time)
+	base.timers.knockback.start(knockback_time)
 
-func enter(msg := {}):
+func enter(msg := {}) -> void:
+	knockback_done = false
 	if UserData.get_value("debug") == 1:
 		print("KnockbackState entered: ", msg)
-	base_anim_player_play_anim("hurt")
-	connect_signal(base.knockback_timer.timeout, _on_timeout)
+	if not base.timers.knockback.timeout.is_connected(_on_timeout):
+		connect_signal(base.timers.knockback.timeout, _on_timeout)
 	start_knockback()
 	saved_knockback = msg.knockback
 
-func physics_update(_delta): # delta is unused here
+func physics_update(_delta) -> void: # delta is unused here
 	if not knockback_done:
 		actor.velocity = saved_knockback
 		return
@@ -29,6 +30,6 @@ func physics_update(_delta): # delta is unused here
 	else:
 		get_actor_statemachine().change_state(actor.states.fly, prepared_message)
 
-func _on_timeout():
+func _on_timeout() -> void:
 	knockback_done = true
-	base.knockback_timer.stop()
+	base.timers.knockback.stop()

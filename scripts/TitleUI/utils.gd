@@ -4,9 +4,9 @@ extends "res://scripts/TitleUI/prepared_vars.gd"
 
 var last_focused_button: Button
 
-#############################################
-#                 UTILITIES                 #
-#############################################
+###########################################################
+#                       UTILITIES                         #
+###########################################################
 
 func handle_animation_player_finished(anim_name: String):
 	if anim_name == "fade_in":

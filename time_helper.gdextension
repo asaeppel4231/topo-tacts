@@ -3,4 +3,4 @@ entry_symbol = "time_helper_init"
 compatibility_minimum = 4.3
 
 [libraries]
-linux.x86_64 = "res://time_helper_extension/time_helper.linux.x86_64.so"
+linux.x86_64 = "res://extensions/time_helper/time_helper.linux.x86_64.so"
