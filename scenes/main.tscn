@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cpypoq2gk16py" path="res://scenes/enemy_example.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://u31a7glcvq2n" path="res://scenes/triax.tscn" id="4_jyhfs"]
 [ext_resource type="Script" uid="uid://lyqp05aslb2p" path="res://scripts/EnemyExample/attack_hitbox.gd" id="5_tbgi4"]
-[ext_resource type="Texture2D" uid="uid://bey03le84ytwf" path="res://assets/example_enemy/example_enemy.png" id="5_tefeu"]
+[ext_resource type="Texture2D" uid="uid://bey03le84ytwf" path="res://assets/graphics/example_enemy/example_enemy.png" id="5_tefeu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o5qli"]
 size = Vector2(815, 45)
@@ -26,7 +26,6 @@ size = Vector2(7235, 138)
 script = ExtResource("1_jyhfs")
 
 [node name="TitleUI" parent="." unique_id=2009301712 instance=ExtResource("1_sugp2")]
-visible = false
 
 [node name="Triax" parent="." unique_id=1908255213 instance=ExtResource("4_jyhfs")]
 position = Vector2(654, 391)
@@ -78,7 +77,6 @@ shape = SubResource("RectangleShape2D_tbgi4")
 position = Vector2(0, -172)
 collision_layer = 16
 script = ExtResource("5_tbgi4")
-damage_amount = 0
 knockback = Vector2(-100, 10)
 direct_die = true
 

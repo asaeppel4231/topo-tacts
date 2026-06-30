@@ -26,6 +26,20 @@ func _ready() -> void:
 		print("Using locale: ", locale)
 	
 	title_ui.show_all()
+#	var i := 0
+#	var j := 10
+# RESULT: Works as expected
+#	while i < j: # First test
+#		print(SaveGameManagerAutoload.create_save())
+#		i += 1
+#	print(SaveGameManagerAutoload.create_save(0))
+#	SaveGameManagerAutoload.close_save()
+#	print(SaveGameManagerAutoload.create_save())
+
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		SaveGameManagerAutoload.shutdown()
+		tree_ctl.quit_game()
 
 func _process(_delta: float) -> void: # delta is unused
 	if Input.is_action_just_pressed("reload (DEBUG)"):

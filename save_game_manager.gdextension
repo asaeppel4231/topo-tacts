@@ -1,0 +1,6 @@
+[configuration]
+entry_symbol = "save_game_manager_init"
+compatibility_minimum = 4.3
+
+[libraries]
+linux.x86_64 = "res://extensions/save_game_manager/save_game_manager.linux.x86_64.so"

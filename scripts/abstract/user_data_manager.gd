@@ -24,6 +24,7 @@ func load_config() -> void:
 			return
 
 		var parsed = JSON.parse_string(file.get_as_text())
+		file.close()
 		if typeof(parsed) == TYPE_DICTIONARY:
 			data = parsed
 		else:
@@ -52,6 +53,7 @@ func save_config() -> void:
 
 	var json_text := JSON.stringify(sorted_data, "\t")
 	file.store_string(json_text)
+	file.close()
 
 func set_value(key: String, value) -> void:
 	data[key] = value

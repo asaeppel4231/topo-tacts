@@ -54,3 +54,10 @@ extends Control
 
 @onready var default_username_lne        := $ColorRect/GUI/DefaultUsername/Username # LNE = LineEdit
 @onready var default_port_spb            := $ColorRect/GUI/DefaultPort/Port         # SPB = SpinBox
+
+@onready var sounds := $Sounds
+
+@onready var audio_stream_players = {
+	"accept": sounds.get_node("Accept"),
+	"cancel": sounds.get_node("Cancel")
+}

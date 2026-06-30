@@ -1,0 +1,13 @@
+import os
+
+env = Environment()
+
+env.Append(CPPPATH=["/usr/local/include", "/usr/local/include/godot-cpp", "/usr/local/include/godot-cpp/include"])
+env.Append(LIBPATH=["/usr/local/lib"])
+env.Append(LIBS=["godot-cpp.linux.template_release.x86_64", "archive"])
+env.Append(LINKFLAGS=["-lz"])
+env.Append(CXXFLAGS=["-std=c++20"])
+
+sources = Glob("*.cpp")
+
+env.SharedLibrary("save_game_manager", sources)

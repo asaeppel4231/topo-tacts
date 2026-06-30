@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cpypoq2gk16py"]
 
-[ext_resource type="Texture2D" uid="uid://bey03le84ytwf" path="res://assets/example_enemy/example_enemy.png" id="1_fbr5l"]
+[ext_resource type="Texture2D" uid="uid://bey03le84ytwf" path="res://assets/graphics/example_enemy/example_enemy.png" id="1_fbr5l"]
 [ext_resource type="Script" uid="uid://lyqp05aslb2p" path="res://scripts/EnemyExample/attack_hitbox.gd" id="2_vrsce"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fbr5l"]

@@ -47,9 +47,12 @@ func _on_confirm_reset_confirmed() -> void:
 	sliders.difficulty.value = 1 # 1 = NORMAL
 	update_difficulty_text_label()
 	init_multiplayer_inputs()
+	if not audio_stream_players.accept.playing:
+		audio_stream_players.accept.play()
 
 func _on_confirm_reset_canceled() -> void:
-	pass
+	if not audio_stream_players.cancel.playing:
+		audio_stream_players.cancel.play()
 
 func _on_difficulty_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:

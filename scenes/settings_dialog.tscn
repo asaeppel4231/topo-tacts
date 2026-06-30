@@ -4,6 +4,8 @@
 [ext_resource type="FontFile" uid="uid://p2p5c1yc44p2" path="res://fonts/Advent Pro/Advent_Pro_Bold.33.ttf" id="2_dy1h8"]
 [ext_resource type="Texture2D" uid="uid://beifdf5cx3h6e" path="res://assets/ui/dialog_common/back.webp" id="2_ona7p"]
 [ext_resource type="LabelSettings" uid="uid://cjmenk564oqbu" path="res://assets/ui/dialog_common/dialog_labels.tres" id="4_dy1h8"]
+[ext_resource type="AudioStream" uid="uid://dqdv6y1g4ultt" path="res://assets/sounds/ui/accept.mp3" id="5_3t1xm"]
+[ext_resource type="AudioStream" uid="uid://cduscr6d3shyo" path="res://assets/sounds/ui/cancel.mp3" id="6_bvyl2"]
 
 [sub_resource type="Theme" id="Theme_00hgc"]
 
@@ -280,6 +282,16 @@ Default Username: Used when connecting to servers.
 Default Port: Used when hosting a server or connecting to one.
 "
 autowrap_mode = 0
+
+[node name="Sounds" type="Node" parent="." unique_id=2082498612]
+
+[node name="Accept" type="AudioStreamPlayer" parent="Sounds" unique_id=603919321]
+stream = ExtResource("5_3t1xm")
+bus = &"SFX"
+
+[node name="Cancel" type="AudioStreamPlayer" parent="Sounds" unique_id=1329332045]
+stream = ExtResource("6_bvyl2")
+bus = &"SFX"
 
 [connection signal="pressed" from="ColorRect/GUI/BackAndHelp/Back" to="." method="_on_back_pressed"]
 [connection signal="pressed" from="ColorRect/GUI/BackAndHelp/Help" to="." method="_on_help_pressed"]

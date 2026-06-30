@@ -20,6 +20,8 @@ var volume_total_state = {
 	"last_value": 0.0
 }
 
+var has_initialized := false
+
 ###########################################################
 #                       UTILITIES                         #
 ###########################################################
@@ -47,8 +49,12 @@ func update_settings_last_changed_label():
 	labels.settings_last_changed.text = tr("Settings last changed at %s") % formatted
 	
 func update_settings_set_timestamp():
+	if has_initialized == false:
+		return
 	UserData.set_value("settings-last-changed", Time.get_unix_time_from_system())
 	update_settings_last_changed_label()
+	if not audio_stream_players.accept.playing:
+		audio_stream_players.accept.play()
 
 func left_or_right_pressed():
 	return Input.is_action_pressed("ui_left") or Input.is_action_pressed("ui_right")
@@ -107,6 +113,7 @@ func open():
 	init_multiplayer_inputs()
 	visible = true
 	buttons.back_and_help.back.grab_focus()
+	has_initialized = true
 
 func close():
 	visible = false
